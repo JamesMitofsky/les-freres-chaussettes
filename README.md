@@ -33,3 +33,7 @@ Setup was done following [these instructions](https://m4xshen.dev/posts/setup-ne
 ```
 "parser": "@typescript-eslint/parser",
 ```
+
+### Version management
+
+- [git-flow](https://github.com/nvie/gitflow)
