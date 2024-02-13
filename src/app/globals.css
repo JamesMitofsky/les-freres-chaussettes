@@ -27,8 +27,8 @@
     --secondary: 42 45% 18%;
     --secondary-foreground: 42 9% 98%;
 
-    --accent: 42 45% 18%;
-    --accent-foreground: 42 9% 98%;
+    --accent: #ffe6b3;
+    --accent-foreground: #000000d9;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 42 9% 98%;
@@ -70,9 +70,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply overflow-auto border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply flex flex-col bg-background text-foreground;
+  }
+  body,
+  html {
+    @apply h-full min-h-screen;
   }
 }
