@@ -12,7 +12,7 @@ export default function CheckoutFlow() {
       }}
     >
       <Image
-        src="/images/socks-front.png"
+          src="/images/socks-front.jpeg"
         alt="Chaussettes"
         layout="fill"
         objectFit="contain"
