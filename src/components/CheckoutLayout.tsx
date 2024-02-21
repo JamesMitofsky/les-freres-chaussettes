@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import TypographyH1 from './typography/TypographyH1';
 
 export default function CheckoutLayout({
   title,
-  children,
+  imageSource,
   primaryButton,
   secondaryButton,
 }: Readonly<{
   title: string;
-  children: React.ReactNode;
+  imageSource: string;
   primaryButton?: {
     label: string;
     onClick: () => void;
@@ -30,7 +31,14 @@ export default function CheckoutLayout({
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
       <div className="flex flex-col justify-center h-full">
-      {children}
+      <Image
+          src={imageSource}
+          alt="Chaussettes"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', maxWidth: "30rem", margin: "auto", height: 'auto' }} // optional
+        />
       </div>
       <div className="m-5 flex flex-grow flex-col justify-end gap-2">
         {primaryButtonElement}
