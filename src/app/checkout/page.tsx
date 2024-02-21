@@ -11,12 +11,14 @@ export default function CheckoutFlow() {
         onClick: () => null,
       }}
     >
-      <Image
+        <Image
           src="/images/socks-front.jpeg"
-        alt="Chaussettes"
-        layout="fill"
-        objectFit="contain"
-      />
+          alt="Chaussettes"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', maxWidth: "30rem", margin: "auto", height: 'auto' }} // optional
+        />
     </CheckoutLayout>
   );
 }

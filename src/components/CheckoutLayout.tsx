@@ -29,7 +29,9 @@ export default function CheckoutLayout({
   return (
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
+      <div className="flex flex-col justify-center h-full">
       {children}
+      </div>
       <div className="m-5 flex flex-grow flex-col justify-end gap-2">
         {primaryButtonElement}
         {secondaryButtonElement}
