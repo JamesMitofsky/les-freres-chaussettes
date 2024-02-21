@@ -70,7 +70,7 @@
 
 @layer base {
   * {
-    @apply overflow-auto border-border;
+    @apply border-border;
   }
   body {
     @apply flex flex-col bg-background text-foreground;
