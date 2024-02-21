@@ -4,12 +4,15 @@ import TypographyH1 from './typography/TypographyH1';
 
 export default function CheckoutLayout({
   title,
-  imageSource,
+  image,
   primaryButton,
   secondaryButton,
 }: Readonly<{
   title: string;
-  imageSource: string;
+  image: {
+    src: string;
+    alt: string;
+  };
   primaryButton?: {
     label: string;
     onClick: () => void;
@@ -30,14 +33,12 @@ export default function CheckoutLayout({
   return (
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
-      <div className="flex flex-col justify-center h-full">
-      <Image
-          src={imageSource}
-          alt="Chaussettes"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', maxWidth: "30rem", margin: "auto", height: 'auto' }} // optional
+      <div className="relative h-full w-full">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          className="m-auto max-w-md object-contain"
+          fill
         />
       </div>
       <div className="m-5 flex flex-grow flex-col justify-end gap-2">
