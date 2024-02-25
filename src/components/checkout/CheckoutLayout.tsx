@@ -36,7 +36,7 @@ export default function CheckoutLayout({
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
       {subtitle && <Subtitle text={subtitle} />}
-      <div className="relative h-full w-full">{children}</div>
+      <div className="relative h-full w-full flex flex-col">{children}</div>
       {primaryButton && (
         <ActionButtons
           primaryButton={generateButtonProps(primaryButton)}

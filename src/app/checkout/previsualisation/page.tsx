@@ -1,12 +1,12 @@
 import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CompletePrevisualization from '@/components/checkout/CompletePrevisualization';
 
 export default function Previsualization() {
   return (
     <CheckoutLayout
       title="Prévisualisation de vos chaussettes"
-      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'unknown'}}
-     >
-   custom pre-rendering
+    >
+      <CompletePrevisualization />
     </CheckoutLayout>
   );
 }
