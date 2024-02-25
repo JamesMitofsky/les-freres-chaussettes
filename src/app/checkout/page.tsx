@@ -1,15 +1,18 @@
 import CheckoutLayoutWithImage from '@/components/checkout/CheckoutLayoutWithImage';
 
-export default function CheckoutFlow() {
+function FaceAvant() {
   return (
     <CheckoutLayoutWithImage
-      title="Souhaitez-vous imprimer un logo à l’avant ?"
-      image={{src: "/images/socks-front.jpeg", alt: "Chaussettes"}}
-      primaryButton={{ label: 'Utiliser un logo', onClick: () => null }}
-      secondaryButton={{
-        label: 'Ne pas utiliser de logo',
-        onClick: () => null,
+      image={{
+        src: '/images/example-socks-front.jpeg',
+        alt: "Des chausettes d'exemple.",
       }}
-     />
+      title="Face avant"
+      subtitle="Personnalisation de la face avant
+        de vos chaussettes"
+      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'checkout/souhaitezVousImprimerUnLogo' }}
+    />
   );
 }
+
+export default FaceAvant;
