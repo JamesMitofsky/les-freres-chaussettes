@@ -1,8 +1,8 @@
-import CheckoutLayout from '@/components/CheckoutLayout';
+import CheckoutLayoutWithImage from '@/components/checkout/CheckoutLayoutWithImage';
 
 export default function CheckoutFlow() {
   return (
-    <CheckoutLayout
+    <CheckoutLayoutWithImage
       title="Souhaitez-vous imprimer un logo à l’avant ?"
       image={{src: "/images/socks-front.jpeg", alt: "Chaussettes"}}
       primaryButton={{ label: 'Utiliser un logo', onClick: () => null }}

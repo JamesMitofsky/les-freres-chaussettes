@@ -1,27 +1,28 @@
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import TypographyH1 from './typography/TypographyH1';
+import TypographyH1 from '../typography/TypographyH1';
+
+
+type CheckoutLayoutProps = Readonly<
+  {
+    title: string;
+    primaryButton?: {
+      label: string;
+      onClick: () => void;
+    };
+    secondaryButton?: {
+      label: string;
+      onClick: () => void;
+    };
+    children: React.ReactNode;
+  }
+>;
 
 export default function CheckoutLayout({
   title,
-  image,
   primaryButton,
   secondaryButton,
-}: Readonly<{
-  title: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  primaryButton?: {
-    label: string;
-    onClick: () => void;
-  };
-  secondaryButton?: {
-    label: string;
-    onClick: () => void;
-  };
-}>) {
+  children,
+}: CheckoutLayoutProps) {
   const primaryButtonElement = primaryButton && (
     <Button className="text-white">{primaryButton.label}</Button>
   );
@@ -34,12 +35,7 @@ export default function CheckoutLayout({
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
       <div className="relative h-full w-full">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          className="m-auto max-w-md object-contain"
-          fill
-        />
+       {children}
       </div>
       <div className="m-5 flex flex-grow flex-col justify-end gap-2">
         {primaryButtonElement}
