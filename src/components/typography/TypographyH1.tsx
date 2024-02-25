@@ -1,6 +1,6 @@
 export default function TypographyH1({ text }: { text: string }) {
   return (
-    <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl">
+    <h1 className="text-3xl my-3 font-extrabold tracking-tight">
       {text}
     </h1>
   );
