@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
 import TypographyH1 from '../typography/TypographyH1';
+import Subtitle from '../typography/Subtitle';
 
 
 type CheckoutLayoutProps = Readonly<
   {
     title: string;
+    subtitle?: string;
     primaryButton?: {
       label: string;
       onClick: () => void;
@@ -19,6 +21,7 @@ type CheckoutLayoutProps = Readonly<
 
 export default function CheckoutLayout({
   title,
+  subtitle,
   primaryButton,
   secondaryButton,
   children,
@@ -34,6 +37,7 @@ export default function CheckoutLayout({
   return (
     <div className="mx-5 flex h-full flex-col">
       <TypographyH1 text={title} />
+      {subtitle && <Subtitle text={subtitle} />}
       <div className="relative h-full w-full">
        {children}
       </div>
