@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import TypographyH1 from '../typography/TypographyH1';
 import Subtitle from '../typography/Subtitle';
 import ActionButtons from '../ActionButtons';
+import BackNavigation from '../BackNavigation';
 
 type CheckoutButtonProps = {
   label: string;
@@ -34,6 +35,7 @@ export default function CheckoutLayout({
 
   return (
     <div className="mx-5 flex h-full flex-col">
+      <BackNavigation />
       <TypographyH1 text={title} />
       {subtitle && <Subtitle text={subtitle} />}
       <div className="relative h-full w-full flex flex-col">{children}</div>
