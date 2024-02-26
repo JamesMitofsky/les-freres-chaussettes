@@ -1,8 +1,8 @@
-import CheckoutLayoutWithImage from '@/components/checkout/CheckoutLayoutWithImage';
+import CheckoutWrapperWithImage from '@/components/checkout/CheckoutWrapperWithImage';
 
 export default function BacksideOfSock() {
   return (
-    <CheckoutLayoutWithImage
+    <CheckoutWrapperWithImage
       title="Face arrière"
       subtitle="Personnalisation de la face arrière de vos chaussettes"
       image={{ src: '/images/socks-back.jpeg', alt: 'Face arrière des chaussettes' }}

@@ -1,4 +1,4 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutLayout from '@/components/checkout/CheckoutWrapper';
 
 export default function SelectNameAndNumber() {
   return (

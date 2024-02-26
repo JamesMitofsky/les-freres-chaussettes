@@ -1,8 +1,8 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 
 export default function SelectSize() {
   return (
-    <CheckoutLayout
+    <CheckoutWrapper
       title="Quelle taille pour vos chaussettes ?"
       primaryButton={{ label: 'Continuer', relativePathToNextPage: 'previsualisation'}}
      >
@@ -10,6 +10,6 @@ export default function SelectSize() {
       <div>m</div>
       <div>l</div>
       <div>xl</div>
-    </CheckoutLayout>
+    </CheckoutWrapper>
   );
 }

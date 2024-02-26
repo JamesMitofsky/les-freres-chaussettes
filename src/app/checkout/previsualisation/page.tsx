@@ -1,12 +1,12 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 import CompletePrevisualization from '@/components/checkout/CompletePrevisualization';
 
 export default function Previsualization() {
   return (
-    <CheckoutLayout
+    <CheckoutWrapper
       title="Prévisualisation de vos chaussettes"
     >
       <CompletePrevisualization />
-    </CheckoutLayout>
+    </CheckoutWrapper>
   );
 }

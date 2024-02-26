@@ -1,12 +1,12 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 
 export default function SelectColor() {
   return (
-    <CheckoutLayout
+    <CheckoutWrapper
       title="pick text color"
       primaryButton={{ label: 'Continuer', relativePathToNextPage: 'selectionnerCouleurDuBande'}}
      >
         select the color please
-    </CheckoutLayout>
+    </CheckoutWrapper>
   );
 }

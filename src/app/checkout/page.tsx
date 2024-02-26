@@ -1,8 +1,8 @@
-import CheckoutLayoutWithImage from '@/components/checkout/CheckoutLayoutWithImage';
+import CheckoutWrapperWithImage from '@/components/checkout/CheckoutWrapperWithImage';
 
 function FaceAvant() {
   return (
-    <CheckoutLayoutWithImage
+    <CheckoutWrapperWithImage
       image={{
         src: '/images/example-socks-front.jpeg',
         alt: "Des chausettes d'exemple.",

@@ -1,12 +1,12 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 
 export default function CheckoutCart() {
   return (
-    <CheckoutLayout
+    <CheckoutWrapper
       title="Panier"
       primaryButton={{ label: 'Continuer', relativePathToNextPage: 'unknown'}}
     >
         <div>cart</div>
-    </CheckoutLayout>
+    </CheckoutWrapper>
   );
 }

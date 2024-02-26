@@ -1,8 +1,8 @@
-import CheckoutLayoutWithImage from '@/components/checkout/CheckoutLayoutWithImage';
+import CheckoutWrapperWithImage from '@/components/checkout/CheckoutWrapperWithImage';
 
 export default function DetermineInclusionOfFrongLogo() {
   return (
-    <CheckoutLayoutWithImage
+    <CheckoutWrapperWithImage
       title="Souhaitez-vous imprimer un logo à l’avant ?"
       image={{src: "/images/socks-front.jpeg", alt: "Chaussettes"}}
       primaryButton={{ label: 'Utiliser un logo', relativePathToNextPage: 'quelLogo'}}

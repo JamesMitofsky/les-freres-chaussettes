@@ -1,12 +1,12 @@
-import CheckoutLayout from '@/components/checkout/CheckoutLayout';
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 
 export default function SelectBandColor() {
   return (
-    <CheckoutLayout
+    <CheckoutWrapper
       title="select band color"
       primaryButton={{ label: 'Continuer', relativePathToNextPage: 'quelleTaille'}}
      >
       customized content for logo selection
-    </CheckoutLayout>
+    </CheckoutWrapper>
   );
 }

@@ -11,33 +11,33 @@ type CheckoutButtonProps = {
   relativePathToNextPage: string;
 };
 
-type CommonCheckoutLayoutProps = {
+type CommonCheckoutWrapperProps = {
   primaryButton?: CheckoutButtonProps;
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
 };
 
-type CheckoutLayoutProps = Readonly<
-  | (CommonCheckoutLayoutProps & {
+type CheckoutWrapperProps = Readonly<
+  | (CommonCheckoutWrapperProps & {
       title: string;
       subtitle?: string;
       customHeader?: never;
     })
-  | (CommonCheckoutLayoutProps & {
+  | (CommonCheckoutWrapperProps & {
       customHeader: React.ReactNode;
       title?: never;
       subtitle?: never;
     })
 >;
 
-export default function CheckoutLayout({
+export default function CheckoutWrapper({
   primaryButton,
   secondaryButton,
   children,
   title,
   subtitle,
   customHeader,
-}: CheckoutLayoutProps) {
+}: CheckoutWrapperProps) {
   const { push } = useRouter();
 
   const generateButtonProps = (button: CheckoutButtonProps) => ({
