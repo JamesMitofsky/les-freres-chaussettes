@@ -48,14 +48,15 @@ export default function CheckoutLayout({
   return (
     <div className="mx-5 flex h-full flex-col">
       <BackNavigation />
-      {title && (
+      {title ? (
         <>
           <TypographyH1 text={title} />
           {subtitle && <Subtitle text={subtitle} />}
         </>
+      ): (
+        customHeader
       )}
-      {customHeader && customHeader}
-      <div className="relative flex h-full w-full flex-col">{children}</div>
+      <main className="relative flex h-full w-full flex-col">{children}</main>
       {primaryButton && (
         <ActionButtons
           primaryButton={generateButtonProps(primaryButton)}
