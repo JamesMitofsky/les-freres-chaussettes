@@ -4,22 +4,21 @@ import CheckoutLayout from './CheckoutLayout';
 
 // Avoid repeating the same props in multiple components
 type CheckoutLayoutProps = ComponentProps<typeof CheckoutLayout>;
-type CheckoutLayoutWithoutChildren = Omit<CheckoutLayoutProps, 'children'>;
 
 type CheckoutLayoutWithImageProps = {
   image: {
     src: string;
     alt: string;
   };
-} & CheckoutLayoutWithoutChildren;
+} & CheckoutLayoutProps;
 
 /** Repackage the CheckoutLayout component to render just an image */
 export default function CheckoutLayoutWithImage({
   image,
-  ...props
+  ...baseCheckoutLayoutProps
 }: CheckoutLayoutWithImageProps) {
   return (
-    <CheckoutLayout {...props}>
+    <CheckoutLayout {...baseCheckoutLayoutProps}>
       <Image
         src={image.src}
         alt={image.alt}

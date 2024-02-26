@@ -11,20 +11,32 @@ type CheckoutButtonProps = {
   relativePathToNextPage: string;
 };
 
-type CheckoutLayoutProps = Readonly<{
-  title: string;
-  subtitle?: string;
+type CommonCheckoutLayoutProps = {
   primaryButton?: CheckoutButtonProps;
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
-}>;
+};
+
+type CheckoutLayoutProps = Readonly<
+  | (CommonCheckoutLayoutProps & {
+      title: string;
+      subtitle?: string;
+      customHeader?: never;
+    })
+  | (CommonCheckoutLayoutProps & {
+      customHeader: React.ReactNode;
+      title?: never;
+      subtitle?: never;
+    })
+>;
 
 export default function CheckoutLayout({
-  title,
-  subtitle,
   primaryButton,
   secondaryButton,
   children,
+  title,
+  subtitle,
+  customHeader,
 }: CheckoutLayoutProps) {
   const { push } = useRouter();
 
@@ -36,9 +48,14 @@ export default function CheckoutLayout({
   return (
     <div className="mx-5 flex h-full flex-col">
       <BackNavigation />
-      <TypographyH1 text={title} />
-      {subtitle && <Subtitle text={subtitle} />}
-      <div className="relative h-full w-full flex flex-col">{children}</div>
+      {title && (
+        <>
+          <TypographyH1 text={title} />
+          {subtitle && <Subtitle text={subtitle} />}
+        </>
+      )}
+      {customHeader && customHeader}
+      <div className="relative flex h-full w-full flex-col">{children}</div>
       {primaryButton && (
         <ActionButtons
           primaryButton={generateButtonProps(primaryButton)}
