@@ -1,17 +1,14 @@
-import { ComponentProps } from 'react';
 import Image from 'next/image';
-import CheckoutWrapper from './CheckoutWrapper';
+import CheckoutWrapper, { CheckoutWithTitle } from './CheckoutWrapper';
 
-// Avoid repeating the same props in multiple components
-type CheckoutWrapperProps = ComponentProps<typeof CheckoutWrapper>;
-type CheckoutWrapperWithoutChildren = Omit<CheckoutWrapperProps, 'children'>;
+type CheckoutWithTitleSansChildren = Omit<CheckoutWithTitle, 'children'>;
 
 type CheckoutWrapperWithImageProps = Readonly<{
   image: {
     src: string;
     alt: string;
   };
-} & CheckoutWrapperWithoutChildren>;
+} & CheckoutWithTitleSansChildren>;
 
 /** Repackage the CheckoutWrapper component to render just an image */
 export default function CheckoutWrapperWithImage({

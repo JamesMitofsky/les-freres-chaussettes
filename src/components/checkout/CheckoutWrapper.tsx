@@ -17,17 +17,22 @@ type CommonCheckoutWrapperProps = {
   children: React.ReactNode;
 };
 
+export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
+  title: string;
+  subtitle?: string;
+  customHeader?: never;
+};
+
+type CheckoutWithCustomHeader = CommonCheckoutWrapperProps & {
+  customHeader: React.ReactNode;
+  title?: never;
+  subtitle?: never;
+};
+
+
 type CheckoutWrapperProps = Readonly<
-  | (CommonCheckoutWrapperProps & {
-      title: string;
-      subtitle?: string;
-      customHeader?: never;
-    })
-  | (CommonCheckoutWrapperProps & {
-      customHeader: React.ReactNode;
-      title?: never;
-      subtitle?: never;
-    })
+  | (CheckoutWithTitle)
+  | (CheckoutWithCustomHeader)
 >;
 
 export default function CheckoutWrapper({
