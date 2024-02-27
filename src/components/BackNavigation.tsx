@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 function BackNavigation() {
   const router = useRouter();
 
-  return (
+  return window.history.length >= 1 && (
     <div className='flex'>
       <button
         type="button"
