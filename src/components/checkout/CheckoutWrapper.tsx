@@ -1,10 +1,16 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import localFont from 'next/font/local';
 import TypographyH1 from '../typography/TypographyH1';
 import Subtitle from '../typography/Subtitle';
 import ActionButtons from '../ActionButtons';
 import BackNavigation from '../BackNavigation';
+
+const sportsFont = localFont({
+  src: '../../../public/fonts/OctinSportsHv.otf',
+  display: 'swap',
+})
 
 type CheckoutButtonProps = {
   label: string;
@@ -15,6 +21,7 @@ type CommonCheckoutWrapperProps = {
   primaryButton?: CheckoutButtonProps;
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
+  useSportsFont?: boolean;
 };
 
 export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
@@ -42,6 +49,7 @@ export default function CheckoutWrapper({
   title,
   subtitle,
   customHeader,
+  useSportsFont,
 }: CheckoutWrapperProps) {
   const { push } = useRouter();
 
@@ -51,7 +59,7 @@ export default function CheckoutWrapper({
   });
 
   return (
-    <div className="mx-5 flex h-full flex-col">
+    <div className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}>
       <BackNavigation />
       {title ? (
         <>
