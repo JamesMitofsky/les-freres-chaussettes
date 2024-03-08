@@ -1,9 +1,6 @@
 export default function Admin() {
-  const adminAuthState: boolean = useAuthState();
-
-  if (!adminAuthState) return <Redirect to="/admin/login" />;
-
+ 
   return (
-    <>cooucou</>
+    <>This is the root of the protected back office pages.</>
   );
 }
