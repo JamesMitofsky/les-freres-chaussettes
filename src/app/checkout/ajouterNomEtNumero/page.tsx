@@ -18,7 +18,6 @@ export default function SelectNameAndNumber() {
     name: undefined,
     number: undefined,
   });
-
  
   const handleTextInput = (e: React.FormEvent<HTMLDivElement>) => {
     const target = e.target as HTMLDivElement;
@@ -27,6 +26,7 @@ export default function SelectNameAndNumber() {
       name: target.textContent !== null ? target.textContent : undefined,
     }));
   };
+
   const handleNumberInput = (e: React.FormEvent<HTMLDivElement>) => {
     const target = e.target as HTMLDivElement;
     if (target.textContent === null) return;
@@ -55,7 +55,7 @@ export default function SelectNameAndNumber() {
       <div className="flex h-full flex-col items-center justify-center gap-10">
         <div
           contentEditable="true"
-          className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.input}`}
+          className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
           data-placeholder={playerPlaceholder.number}
           onInput={handleNumberInput}
           suppressContentEditableWarning
