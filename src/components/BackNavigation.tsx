@@ -1,12 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 function BackNavigation() {
   const router = useRouter();
+  const currentPath = usePathname();
 
-  return window.history.length >= 1 && (
+  return currentPath !== '/checkout' && (
     <div className='flex'>
       <button
         type="button"
