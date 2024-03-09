@@ -1,5 +1,8 @@
-import useAuthState from '@/hooks/useAuthState';
-import { useRouter } from 'next/router';
+'use client'
+
+import useAuthState from "@/hooks/useAuthState";
+import { useRouter } from "next/navigation";
+
 
 export default function AdminLayout({
   children,
