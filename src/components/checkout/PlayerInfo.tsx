@@ -1,23 +1,25 @@
+import playerPlaceholder from "@/globals/placeholderPlayer";
+
 export type Player =  {
   name?: string;
   number?: string;
 }
 
 type MiniPrevisualizationProps = {
-  player: Player;
-  playerPlaceholder: Player;
+  name: string | undefined;
+  number: string | undefined;
 };
 
 
-function PlayerInfo({ player, playerPlaceholder}: MiniPrevisualizationProps) {
+function PlayerInfo({ name, number}: MiniPrevisualizationProps) {
 
-  const playerNameExists = player.name !== undefined && player.name !== '';
-  const playerNumberExists = player.number !== undefined && player.number !== '';
+  const playerNameExists = name !== undefined && name !== '';
+  const playerNumberExists = number !== undefined && number !== '';
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="w-min text-3xl">{playerNumberExists ? player.number : playerPlaceholder.number}</div>
-      <div>{playerNameExists ? player.name : playerPlaceholder.name}</div>
+      <div className="w-min text-3xl">{playerNumberExists ? number : playerPlaceholder.number}</div>
+      <div>{playerNameExists ? name : playerPlaceholder.name}</div>
     </div>
   );
 }

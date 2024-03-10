@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import PlayerInfo, { Player } from './PlayerInfo';
+import PlayerInfo from './PlayerInfo';
 
 
 
 type MiniPrevisualizationProps = {
-  player: Player;
-  playerPlaceholder: Player;
+  name: string | undefined;
+  number: string | undefined;
 };
-function MiniPrevisualization({player, playerPlaceholder}: MiniPrevisualizationProps ) {
+function MiniPrevisualization({name, number}: MiniPrevisualizationProps ) {
   const imageSrc = '/images/socks-back.jpeg';
 
 
@@ -21,7 +21,7 @@ function MiniPrevisualization({player, playerPlaceholder}: MiniPrevisualizationP
         width={50}
         height={50}
       />
-      <PlayerInfo player={player} playerPlaceholder={playerPlaceholder} />
+      <PlayerInfo name={name} number={number} />
     </div>
   );
 }
