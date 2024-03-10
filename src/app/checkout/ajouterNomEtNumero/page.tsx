@@ -116,7 +116,13 @@ export default function SelectNameAndNumber() {
             data-placeholder={playerPlaceholder.number}
             onInput={updatePlayerNumber}
             suppressContentEditableWarning
-          />
+          >
+            {
+              pendingOrder.customizationFields.find(
+                (field) => field.fieldId === fieldIds.number,
+              )?.value
+            }
+          </div>
         )}
         {form.getValues().includeName && (
           <div
@@ -125,7 +131,13 @@ export default function SelectNameAndNumber() {
             data-placeholder={playerPlaceholder.name}
             onInput={updatePlayerName}
             suppressContentEditableWarning
-          />
+          >
+            {
+              pendingOrder.customizationFields.find(
+                (field) => field.fieldId === fieldIds.name,
+              )?.value
+            }
+          </div>
         )}
       </div>
       <div className="flex h-full flex-col items-center justify-center gap-10">
