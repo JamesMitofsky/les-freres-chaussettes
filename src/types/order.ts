@@ -1,9 +1,7 @@
-import CartProduct from './carteProduct';
-import Customer from './customer';
+import CartProduct from './customizedPairOfSocks';
 
 type Order = {
   products: CartProduct[];
-  customer: Customer;
 };
 
 export default Order;
