@@ -1,9 +1,5 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
 import { Switch } from '@/components/ui/switch';
 import {
   Form,
@@ -12,20 +8,18 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
+import { UseFormReturn } from 'react-hook-form';
 
-const FormSchema = z.object({
-  includeNumber: z.boolean().default(false).optional(),
-  includeName: z.boolean().default(false).optional(),
-});
 
-export default function SwitchForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      includeNumber: false,
-      includeName: false,
-    },
-  });
+type SwitchFormProps = {
+  form: UseFormReturn<{
+    includeNumber?: boolean | undefined;
+    includeName?: boolean | undefined;
+}, any, undefined>;
+};
+
+export default function SwitchForm({form}: SwitchFormProps) {
+
 
   return (
     <Form {...form}>
