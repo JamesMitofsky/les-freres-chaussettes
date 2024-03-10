@@ -4,6 +4,7 @@ import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import { useState } from 'react';
 import { Player } from '@/components/checkout/PlayerInfo';
+import SwitchForm from '@/components/checkout/CustomSwitchState';
 import styles from './Input.module.css';
 
 
@@ -67,6 +68,9 @@ export default function SelectNameAndNumber() {
           onInput={handleTextInput}
           suppressContentEditableWarning
         />
+      </div>
+      <div className="flex h-full flex-col items-center justify-center gap-10">
+        <SwitchForm />
       </div>
     </CheckoutWrapper>
   );
