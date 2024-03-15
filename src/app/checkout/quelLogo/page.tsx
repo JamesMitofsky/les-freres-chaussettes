@@ -4,6 +4,7 @@ import Image from 'next/image';
 export default function SelectLogo() {
   return (
     <CheckoutWrapper
+      currentStep={3}
       title="Quel logo souhaitez-vous utiliser ?"
       primaryButton={{
         label: 'Continuer',

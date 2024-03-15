@@ -6,11 +6,12 @@ import TypographyH1 from '../typography/TypographyH1';
 import Subtitle from '../typography/Subtitle';
 import ActionButtons from '../ActionButtons';
 import BackNavigation from '../BackNavigation';
+import { Progress } from '../ui/progress';
 
 const sportsFont = localFont({
   src: '../../../public/fonts/OctinSportsHv.otf',
   display: 'swap',
-})
+});
 
 type CheckoutButtonProps = {
   label: string;
@@ -22,6 +23,7 @@ type CommonCheckoutWrapperProps = {
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
   useSportsFont?: boolean;
+  currentStep?: number;
 };
 
 export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
@@ -36,10 +38,8 @@ type CheckoutWithCustomHeader = CommonCheckoutWrapperProps & {
   subtitle?: never;
 };
 
-
 type CheckoutWrapperProps = Readonly<
-  | (CheckoutWithTitle)
-  | (CheckoutWithCustomHeader)
+  CheckoutWithTitle | CheckoutWithCustomHeader
 >;
 
 export default function CheckoutWrapper({
@@ -50,6 +50,7 @@ export default function CheckoutWrapper({
   subtitle,
   customHeader,
   useSportsFont,
+  currentStep,
 }: CheckoutWrapperProps) {
   const { push } = useRouter();
 
@@ -59,14 +60,17 @@ export default function CheckoutWrapper({
   });
 
   return (
-    <div className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}>
+    <div
+      className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}
+    >
       <BackNavigation />
+      {currentStep && <Progress value={(currentStep / 9) * 100} />}
       {title ? (
         <>
           <TypographyH1 text={title} />
           {subtitle && <Subtitle text={subtitle} />}
         </>
-      ): (
+      ) : (
         customHeader
       )}
       <main className="relative flex h-full w-full flex-col">{children}</main>
