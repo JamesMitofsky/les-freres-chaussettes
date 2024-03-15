@@ -5,7 +5,6 @@ import localFont from 'next/font/local';
 import TypographyH1 from '../typography/TypographyH1';
 import Subtitle from '../typography/Subtitle';
 import ActionButtons from '../ActionButtons';
-import BackNavigation from '../BackNavigation';
 import { Progress } from '../ui/progress';
 
 const sportsFont = localFont({
@@ -63,7 +62,6 @@ export default function CheckoutWrapper({
     <div
       className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}
     >
-      <BackNavigation />
       {currentStep && <Progress value={(currentStep / 9) * 100} />}
       {title ? (
         <>
