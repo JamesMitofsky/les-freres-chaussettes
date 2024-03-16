@@ -88,7 +88,7 @@ export default function SelectNameAndNumber() {
 
   return (
     <CheckoutWrapper
-      currentStep={5}
+      currentStep={4}
       customHeader={
         <MiniPrevisualization
           name={

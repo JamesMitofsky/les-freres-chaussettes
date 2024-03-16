@@ -3,7 +3,7 @@ import CheckoutWrapperWithImage from '@/components/checkout/CheckoutWrapperWithI
 function FaceAvant() {
   return (
     <CheckoutWrapperWithImage
-      currentStep={1}
+      currentStep={0}
       image={{
         src: '/images/example-socks-front.jpeg',
         alt: "Des chausettes d'exemple.",
