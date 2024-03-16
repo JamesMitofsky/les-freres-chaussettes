@@ -18,11 +18,13 @@ const Progress = React.forwardRef<
 
   const [progress, setProgress] = useLocalStorageState<number>('checkoutProgress', {defaultValue: value})
 
+  const valueIsNumber = value !== (undefined || null)
+
   useEffect(() => {
-    if (value) {
+    if (valueIsNumber) {
       setProgress(value)
     }
-  }, [value, setProgress])
+  }, [value, valueIsNumber, setProgress])
 
 
   return (

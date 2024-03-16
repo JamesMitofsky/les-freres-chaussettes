@@ -62,7 +62,7 @@ export default function CheckoutWrapper({
     <div
       className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}
     >
-      {currentStep && <Progress value={(currentStep / 9) * 100} />}
+      {currentStep !== (null || undefined) && <Progress value={(currentStep / 8) * 100} />}
       {title ? (
         <>
           <TypographyH1 text={title} />
