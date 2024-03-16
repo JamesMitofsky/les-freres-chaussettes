@@ -10,8 +10,6 @@ type MiniPrevisualizationProps = {
 function MiniPrevisualization({name, number}: MiniPrevisualizationProps ) {
   const imageSrc = '/images/socks-back.jpeg';
 
-
-
   return (
     <div className="flex w-full justify-between px-5">
       <Image

@@ -10,6 +10,7 @@ import playerPlaceholder from '@/globals/placeholderPlayer';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
+import { ChangeEvent } from 'react';
 import styles from './Input.module.css';
 
 const FormSchema = z.object({
@@ -25,57 +26,26 @@ export default function SelectNameAndNumber() {
         quantity: 1,
         productId: 1,
         baseId: undefined,
-        customizationFields: [
-          { fieldId: fieldIds.number, value: '' },
-          { fieldId: fieldIds.name, value: '' },
-          { fieldId: fieldIds.color, value: '#00000' },
-          { fieldId: fieldIds.bandColor, value: '#fffff' },
-          { fieldId: fieldIds.image, value: '' },
-        ],
+        customizationFields: {
+          [fieldIds.number]: '',
+          [fieldIds.name]: '',
+          [fieldIds.color]: '',
+          [fieldIds.bandColor]: '',
+          [fieldIds.image]: '',
+        },
       },
     });
 
-  // console.log(pendingOrder)
+  const updateTextInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
 
-  const updatePlayerName = (e: React.FormEvent<HTMLDivElement>) => {
-    const { textContent } = e.target as HTMLDivElement;
-
-    setPendingOrder((prevOrder) => {
-      const newCustomizationFields = prevOrder.customizationFields.map(
-        (field) =>
-          field.fieldId === fieldIds.name
-            ? {
-                ...field,
-                value: textContent !== null ? textContent : undefined,
-              }
-            : field,
-      );
-
-      return {
-        ...prevOrder,
-        customizationFields: newCustomizationFields,
-      };
-    });
-  };
-  const updatePlayerNumber = (e: React.FormEvent<HTMLDivElement>) => {
-    const { textContent } = e.target as HTMLDivElement;
-
-    setPendingOrder((prevOrder) => {
-      const newCustomizationFields = prevOrder.customizationFields.map(
-        (field) =>
-          field.fieldId === fieldIds.number
-            ? {
-                ...field,
-                value: textContent !== null ? textContent : undefined,
-              }
-            : field,
-      );
-
-      return {
-        ...prevOrder,
-        customizationFields: newCustomizationFields,
-      };
-    });
+    setPendingOrder((prevOrder) => ({
+      ...prevOrder,
+      customizationFields: {
+        ...prevOrder.customizationFields,
+        [name]: value !== null ? value : '',
+      },
+    }));
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -86,21 +56,14 @@ export default function SelectNameAndNumber() {
     },
   });
 
+  const { getValues } = form;
   return (
     <CheckoutWrapper
       currentStep={4}
       customHeader={
         <MiniPrevisualization
-          name={
-            pendingOrder.customizationFields.find(
-              (field) => field.fieldId === fieldIds.name,
-            )?.value
-          }
-          number={
-            pendingOrder.customizationFields.find(
-              (field) => field.fieldId === fieldIds.number,
-            )?.value
-          }
+          number={pendingOrder.customizationFields[fieldIds.number]}
+          name={pendingOrder.customizationFields[fieldIds.name]}
         />
       }
       primaryButton={{
@@ -110,35 +73,25 @@ export default function SelectNameAndNumber() {
       useSportsFont
     >
       <div className="flex h-full flex-col items-center justify-center gap-10">
-        {form.getValues().includeNumber && (
-          <div
-            contentEditable="true"
+        {getValues().includeNumber && (
+          <input
+            type="text"
             className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
-            data-placeholder={playerPlaceholder.number}
-            onInput={updatePlayerNumber}
-            suppressContentEditableWarning
-          >
-            {
-              pendingOrder.customizationFields.find(
-                (field) => field.fieldId === fieldIds.number,
-              )?.value
-            }
-          </div>
-        )}
-        {form.getValues().includeName && (
-          <div
-            contentEditable="true"
-            className={`w-full border-b px-3 text-center text-7xl text-gray-700 focus:outline-none ${styles.customInput}`}
-            data-placeholder={playerPlaceholder.name}
-            onInput={updatePlayerName}
-            suppressContentEditableWarning
-          >
-            {
-              pendingOrder.customizationFields.find(
-                (field) => field.fieldId === fieldIds.name,
-              )?.value
-            }
-          </div>
+            placeholder={playerPlaceholder.number}
+            name={fieldIds.number.toString()}
+            value={pendingOrder.customizationFields[fieldIds.number]}
+            onChange={updateTextInput}
+          />
+          )}
+        {getValues().includeName && (
+          <input
+            type="text"
+            className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
+            placeholder={playerPlaceholder.name}
+            name={fieldIds.name.toString()}
+            value={pendingOrder.customizationFields[fieldIds.name]}
+            onChange={updateTextInput}
+          />
         )}
       </div>
       <div className="flex h-full flex-col items-center justify-center gap-10">
