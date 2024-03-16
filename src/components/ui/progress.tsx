@@ -22,7 +22,7 @@ const Progress = React.forwardRef<
     if (value) {
       setProgress(value)
     }
-  }, [value])
+  }, [value, setProgress])
 
 
   return (
