@@ -86,7 +86,7 @@ export default function SelectNameAndNumber() {
         {getValues().includeName && (
           <input
             type="text"
-            className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
+            className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput}`}
             placeholder={playerPlaceholder.name}
             name={fieldIds.name.toString()}
             value={pendingOrder.customizationFields[fieldIds.name]}
