@@ -8,7 +8,8 @@ type MiniPrevisualizationProps = {
   number: string | undefined;
 };
 function MiniPrevisualization({name, number}: MiniPrevisualizationProps ) {
-  const imageSrc = '/images/socks-back.jpeg';
+  // todo - fetch the user-selected logo
+  const imageSrc = '/images/example-logo.png';
 
   return (
     <div className="flex w-full justify-between px-5">
