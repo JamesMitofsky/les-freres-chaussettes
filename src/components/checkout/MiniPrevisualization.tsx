@@ -6,8 +6,10 @@ import PlayerInfo from './PlayerInfo';
 type MiniPrevisualizationProps = {
   name: string | undefined;
   number: string | undefined;
+  showName: boolean;
+  showNumber: boolean;
 };
-function MiniPrevisualization({name, number}: MiniPrevisualizationProps ) {
+function MiniPrevisualization({name, number, showName, showNumber}: MiniPrevisualizationProps ) {
   // todo - fetch the user-selected logo
   const imageSrc = '/images/example-logo.png';
 
@@ -20,7 +22,7 @@ function MiniPrevisualization({name, number}: MiniPrevisualizationProps ) {
         width={50}
         height={50}
       />
-      <PlayerInfo name={name} number={number} />
+      <PlayerInfo showName={showName} name={name} showNumber={showNumber} number={number} />
     </div>
   );
 }

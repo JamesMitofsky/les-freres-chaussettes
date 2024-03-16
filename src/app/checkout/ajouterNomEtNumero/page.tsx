@@ -63,7 +63,9 @@ export default function SelectNameAndNumber() {
       customHeader={
         <MiniPrevisualization
           number={pendingOrder.customizationFields[fieldIds.number]}
+          showNumber={getValues().includeNumber ?? true}
           name={pendingOrder.customizationFields[fieldIds.name]}
+          showName={getValues().includeName ?? true}
         />
       }
       primaryButton={{
