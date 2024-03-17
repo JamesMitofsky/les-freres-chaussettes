@@ -23,6 +23,7 @@ type CommonCheckoutWrapperProps = {
   children: React.ReactNode;
   useSportsFont?: boolean;
   currentStep?: number;
+  className?: string;
 };
 
 export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
@@ -50,6 +51,7 @@ export default function CheckoutWrapper({
   customHeader,
   useSportsFont,
   currentStep,
+  className,
 }: CheckoutWrapperProps) {
   const { push } = useRouter();
 
@@ -71,7 +73,7 @@ export default function CheckoutWrapper({
       ) : (
         customHeader
       )}
-      <main className="relative flex h-full w-full flex-col">{children}</main>
+      <main className={`relative flex h-full w-full flex-col ${className}`}>{children}</main>
       {primaryButton && (
         <ActionButtons
           primaryButton={generateButtonProps(primaryButton)}
