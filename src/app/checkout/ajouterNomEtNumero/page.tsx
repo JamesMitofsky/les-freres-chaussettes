@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import { ChangeEvent } from 'react';
+import { pendingOrderKey } from '@/globals/localStorageKeys';
 import styles from './Input.module.css';
 
 const FormSchema = z.object({
@@ -21,7 +22,7 @@ const FormSchema = z.object({
 export default function SelectNameAndNumber() {
   // TODO: remove the test value from local storage
   const [pendingOrder, setPendingOrder] =
-    useLocalStorageState<CustomizedPairOfSocks>('pendingOrder', {
+    useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
       defaultValue: {
         quantity: 1,
         productId: 1,
