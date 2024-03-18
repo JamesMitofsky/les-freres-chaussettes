@@ -26,9 +26,9 @@ export default function SelectNameAndNumber() {
       defaultValue: playerObject,
     });
 
-    const { customizationFields } = pendingOrder;
+  const { customizationFields } = pendingOrder;
 
-    const {name: nameId, number: numberId} = fieldIds;
+  const { name: nameId, number: numberId } = fieldIds;
 
   const updateTextInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name: customizedFieldId } = e.target;
@@ -54,14 +54,7 @@ export default function SelectNameAndNumber() {
   return (
     <CheckoutWrapper
       currentStep={4}
-      customHeader={
-        <MiniPrevisualization
-          number={customizationFields[numberId]}
-          showNumber={getValues().includeNumber ?? true}
-          name={customizationFields[nameId]}
-          showName={getValues().includeName ?? true}
-        />
-      }
+      customHeader={<MiniPrevisualization />}
       primaryButton={{
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleur',

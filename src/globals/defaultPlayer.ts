@@ -8,8 +8,8 @@ export const playerObject: CustomizedPairOfSocks = {
   customizationFields: {
     [fieldIds.number]: '',
     [fieldIds.name]: '',
-    [fieldIds.color]: '',
-    [fieldIds.bandColor]: '',
-    [fieldIds.image]: '',
+    [fieldIds.color]: '#9ca3af',
+    [fieldIds.bandColor]: '#9ca3af',
+    [fieldIds.image]: '/images/example-logo.png',
   },
 };

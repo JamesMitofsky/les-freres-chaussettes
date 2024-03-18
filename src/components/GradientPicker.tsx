@@ -2,14 +2,21 @@ import { useCallback } from 'react';
 import { CirclePicker, ColorResult } from 'react-color';
 
 const possibleColors = [
-  '#E2E2E2',
-  '#ff75c3',
-  '#ffa647',
-  '#ffe83f',
-  '#9fff5b',
-  '#70e2ff',
-  '#cd93ff',
-  '#09203f',
+  "#FF5733", // Vivid Orange
+  "#FFD700", // Gold
+  "#00FFFF", // Cyan
+  "#FF69B4", // Hot Pink
+  "#00FF00", // Lime Green
+  "#8A2BE2", // Blue Violet
+  "#FF4500", // Orange Red
+  "#40E0D0", // Turquoise
+  "#FFD700", // Goldenrod
+  "#8B008B", // Dark Magenta
+  "#FF8C00", // Dark Orange
+  "#008080", // Teal
+  "#FF1493", // Deep Pink
+  "#808000", // Olive
+  "#9400D3"  // Dark Violet
 ] as const;
 
 export type AllowedColors = (typeof possibleColors)[number];
@@ -26,12 +33,13 @@ export function GradientPicker({ setHexColor }: GradiantPickerProps) {
   }, [setHexColor]);
   
   return (
-    <div className="align-center flex flex-col justify-center">
+    <div className="align-center flex flex-col justify-center items-center">
       <CirclePicker
+        colors={[...possibleColors]}
         width="100%"
         circleSpacing={30}
         circleSize={30}
-        className="m-auto"
+        className="max-w-80 justify-center"
         onChangeComplete={handleColorChange}
       />
     </div>

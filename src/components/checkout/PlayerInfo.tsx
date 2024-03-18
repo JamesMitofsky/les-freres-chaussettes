@@ -6,17 +6,18 @@ export type Player =  {
 }
 
 type MiniPrevisualizationProps = {
-  name: string | undefined;
-  number: string | undefined;
-  showName: boolean;
-  showNumber: boolean;
+  name?: string;
+  number?: string;
 };
 
 
-function PlayerInfo({ name, number, showName, showNumber}: MiniPrevisualizationProps) {
+function PlayerInfo({ name, number }: MiniPrevisualizationProps) {
 
   const playerNameExists = name !== undefined && name !== '';
   const playerNumberExists = number !== undefined && number !== '';
+
+  const showName = true;
+  const showNumber = true;
 
   return (
     <div className="flex flex-col justify-center items-center">
