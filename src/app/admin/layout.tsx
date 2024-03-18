@@ -2,7 +2,7 @@
 
 import useAuthState from "@/hooks/useAuthState";
 import { useRouter } from "next/navigation";
-
+import { useEffect } from "react";
 
 export default function AdminLayout({
   children,
@@ -12,7 +12,11 @@ export default function AdminLayout({
   const [adminAuthState] = useAuthState();
   const { push } = useRouter();
 
-  if (!adminAuthState) push('/admin/login');
+  useEffect(() => {
+    if (!localStorage.getItem("jwt")) {
+      push('/admin/login')
+    }
+}, [])
 
   return children;
 }

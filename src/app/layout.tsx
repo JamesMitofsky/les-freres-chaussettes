@@ -1,24 +1,32 @@
-import type { Metadata } from 'next';
+'use client'
+
+import { ApolloProvider } from '@apollo/client';
+// import type { Metadata } from 'next';
 import './globals.css';
 import GlobalHeader from '@/components/GlobalHeader';
 
-export const metadata: Metadata = {
-  title: 'Les Frères Chaussettes',
-  description:
-    'Joue avec des chaussettes de sport personnalisées, à ton effigie et pour toutes tes compétitions !',
-};
+import createApolloClient from '@/apollo-client';
+
+// export const metadata: Metadata = {
+//   title: 'Les Frères Chaussettes',
+//   description:
+//     'Joue avec des chaussettes de sport personnalisées, à ton effigie et pour toutes tes compétitions !',
+// };
+
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body>
-        <GlobalHeader />
-        <main className="flex-grow">{children}</main>
-      </body>
+      <ApolloProvider client={createApolloClient()}>
+          <body>
+            <GlobalHeader />
+            <main className="flex-grow">{children}</main>
+          </body>
+      </ApolloProvider>
     </html>
   );
 }

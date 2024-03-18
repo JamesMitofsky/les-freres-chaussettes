@@ -1,9 +1,44 @@
 'use client';
+import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import { gql, useMutation } from '@apollo/client';
+import useAuthState from '@/hooks/useAuthState';
+import { useRouter } from 'next/router';
+
+const LOGIN_MUTATION = gql`
+  mutation($password: String!){
+    loginAdmin(password: $password) {
+      accessToken
+    }
+  }
+`
+
 export default function Login() {
+  let [login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  const [password, setPassword] = useState("")
+
+  const handleLogin = async () => {
+    console.log('loging in')
+    await login({
+      variables: {
+        password
+      },
+      onCompleted: (data) => {
+        // TODO : maybe add a state for authentication
+        localStorage.setItem("jwt", data.loginAdmin.accessToken)
+        window.location.href = "/admin"
+      },
+      onError: (err) => {
+        setPassword("")
+        console.log(err.message)
+        // TODO : show error message
+      }
+    })
+  }
+
   return (
     <div className="m-auto flex h-full w-full max-w-sm flex-col items-start justify-center gap-10 p-10">
       <div>
@@ -12,12 +47,12 @@ export default function Login() {
           Enter le mot de passe pour accéder à l'interface d'administration.
         </p>
       </div>
-      <Input />
+      <Input type="password" onChange={(input) => setPassword(input.target.value)} value={password} />
       <Button
-        onClick={() => console.log('Sign in clicked')}
+        onClick={handleLogin}
         variant="gooeyRight"
       >
-        Connecter
+        Connexion
       </Button>
     </div>
   );
