@@ -13,6 +13,7 @@ import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import { ChangeEvent } from 'react';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
 import styles from './Input.module.css';
+import { playerObject } from '../../../globals/defaultPlayer';
 
 const FormSchema = z.object({
   includeNumber: z.boolean().default(true).optional(),
@@ -20,31 +21,23 @@ const FormSchema = z.object({
 });
 
 export default function SelectNameAndNumber() {
-  // TODO: remove the test value from local storage
   const [pendingOrder, setPendingOrder] =
     useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
-      defaultValue: {
-        quantity: 1,
-        productId: 1,
-        baseId: undefined,
-        customizationFields: {
-          [fieldIds.number]: '',
-          [fieldIds.name]: '',
-          [fieldIds.color]: '',
-          [fieldIds.bandColor]: '',
-          [fieldIds.image]: '',
-        },
-      },
+      defaultValue: playerObject,
     });
 
+    const { customizationFields } = pendingOrder;
+
+    const {name: nameId, number: numberId} = fieldIds;
+
   const updateTextInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
+    const { value, name: customizedFieldId } = e.target;
 
     setPendingOrder((prevOrder) => ({
       ...prevOrder,
       customizationFields: {
         ...prevOrder.customizationFields,
-        [name]: value !== null ? value : '',
+        [customizedFieldId]: value !== null ? value : '',
       },
     }));
   };
@@ -63,9 +56,9 @@ export default function SelectNameAndNumber() {
       currentStep={4}
       customHeader={
         <MiniPrevisualization
-          number={pendingOrder.customizationFields[fieldIds.number]}
+          number={customizationFields[numberId]}
           showNumber={getValues().includeNumber ?? true}
-          name={pendingOrder.customizationFields[fieldIds.name]}
+          name={customizationFields[nameId]}
           showName={getValues().includeName ?? true}
         />
       }
@@ -81,18 +74,18 @@ export default function SelectNameAndNumber() {
             type="text"
             className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
             placeholder={playerPlaceholder.number}
-            name={fieldIds.number.toString()}
-            value={pendingOrder.customizationFields[fieldIds.number]}
+            name={numberId.toString()}
+            value={customizationFields[numberId]}
             onChange={updateTextInput}
           />
-          )}
+        )}
         {getValues().includeName && (
           <input
             type="text"
             className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput}`}
             placeholder={playerPlaceholder.name}
-            name={fieldIds.name.toString()}
-            value={pendingOrder.customizationFields[fieldIds.name]}
+            name={nameId.toString()}
+            value={customizationFields[nameId]}
             onChange={updateTextInput}
           />
         )}

@@ -4,38 +4,32 @@ import { AllowedColors, GradientPicker } from '@/components/GradientPicker';
 import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 import { useCallback } from 'react';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
-import fieldIds from '@/globals/fieldIds';
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
 import useLocalStorageState from 'use-local-storage-state';
+import fieldIds from '@/globals/fieldIds';
+import { playerObject } from '@/globals/defaultPlayer';
 
 export default function SelectColor() {
+  const { number: numId, color: colorId } = fieldIds;
   const [pendingOrder, setPendingOrder] =
-    useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
-      defaultValue: {
-        quantity: 1,
-        productId: 1,
-        baseId: undefined,
-        customizationFields: {
-          [fieldIds.number]: '',
-          [fieldIds.name]: '',
-          [fieldIds.color]: '',
-          [fieldIds.bandColor]: '',
-          [fieldIds.image]: '',
-        },
-      },
-    });
+  useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
+    defaultValue: playerObject,
+  });
+  
   const handleColorSetting = useCallback(
     (color: AllowedColors) => {
       setPendingOrder((prevOrder) => ({
         ...prevOrder,
         customizationFields: {
           ...prevOrder.customizationFields,
-          [fieldIds.color]: color,
+          [colorId]: color,
         },
       }));
     },
-    [setPendingOrder],
-  );
+    [setPendingOrder, colorId],
+    );
+    
+    const { customizationFields } = pendingOrder;
 
   return (
     <CheckoutWrapper
@@ -45,11 +39,11 @@ export default function SelectColor() {
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleurDuBande',
       }}
-      className="justify-center align-center"
+      className="align-center justify-center"
     >
+      <div>{customizationFields[numId]}</div>
       <GradientPicker setHexColor={handleColorSetting} />
-
-      {pendingOrder.customizationFields[fieldIds.color]}
+      {pendingOrder.customizationFields[colorId]}
     </CheckoutWrapper>
   );
 }
