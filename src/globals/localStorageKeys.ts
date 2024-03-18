@@ -1,4 +1,4 @@
-const pendingOrderKey = 't-pendingOrder';
+const pendingOrderKey = 'ttt-pendingOrder';
 const shoppingCartKey = 'shoppingCart';
 
 export { pendingOrderKey, shoppingCartKey };

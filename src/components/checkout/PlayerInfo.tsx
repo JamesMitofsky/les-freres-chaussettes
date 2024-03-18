@@ -1,7 +1,6 @@
 import { playerObject } from '@/globals/defaultPlayer';
 import fieldIds from '@/globals/fieldIds';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
-import playerPlaceholder from '@/globals/placeholderPlayer';
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
 import useLocalStorageState from 'use-local-storage-state';
 import localFont from 'next/font/local';
@@ -11,23 +10,12 @@ export type Player = {
   number?: string;
 };
 
-type MiniPrevisualizationProps = {
-  name?: string;
-  number?: string;
-};
-
 const sportsFont = localFont({
   src: '../../../public/fonts/OctinSportsHv.otf',
   display: 'swap',
 });
 
-const showName = true;
-const showNumber = true;
-
-function PlayerInfo({ name, number }: MiniPrevisualizationProps) {
-  const playerNameExists = name !== undefined && name !== '';
-  const playerNumberExists = number !== undefined && number !== '';
-
+function PlayerInfo() {
   const [pendingOrder] = useLocalStorageState<CustomizedPairOfSocks>(
     pendingOrderKey,
     {
@@ -35,21 +23,16 @@ function PlayerInfo({ name, number }: MiniPrevisualizationProps) {
     },
   );
   const { customizationFields } = pendingOrder;
-  const { color: colorId } = fieldIds;
+  const { color: colorId, name: nameId, number: numberId } = fieldIds;
 
   return (
     <div
       style={{ color: customizationFields[colorId] }}
       className={`flex flex-col items-center justify-center ${sportsFont.className}`}
     >
-      {showNumber && (
-        <div className="w-min text-3xl">
-          {playerNumberExists ? number : playerPlaceholder.number}
-        </div>
-      )}
-      {showName && (
-        <div>{playerNameExists ? name : playerPlaceholder.name}</div>
-      )}
+      <div className="w-min text-3xl">{customizationFields[numberId]}</div>
+
+      <div>{customizationFields[nameId]}</div>
     </div>
   );
 }

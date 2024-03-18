@@ -12,7 +12,7 @@ function MiniPrevisualization() {
     defaultValue: playerObject,
   });
 
-  const { image: imageId, name: nameId, number: numberId } = fieldIds;
+  const { image: imageId } = fieldIds;
 
   const { customizationFields } = pendingOrder;
 
@@ -25,7 +25,7 @@ function MiniPrevisualization() {
         width={50}
         height={50}
       />
-      <PlayerInfo name={customizationFields[nameId]} number={customizationFields[numberId]} />
+      <PlayerInfo />
     </div>
   );
 }
