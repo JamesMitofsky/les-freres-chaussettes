@@ -1,16 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import localFont from 'next/font/local';
 import TypographyH1 from '../typography/TypographyH1';
 import Subtitle from '../typography/Subtitle';
 import ActionButtons from '../ActionButtons';
 import { Progress } from '../ui/progress';
-
-const sportsFont = localFont({
-  src: '../../../public/fonts/OctinSportsHv.otf',
-  display: 'swap',
-});
 
 type CheckoutButtonProps = {
   label: string;
@@ -21,7 +15,6 @@ type CommonCheckoutWrapperProps = {
   primaryButton?: CheckoutButtonProps;
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
-  useSportsFont?: boolean;
   currentStep?: number;
   className?: string;
 };
@@ -49,7 +42,6 @@ export default function CheckoutWrapper({
   title,
   subtitle,
   customHeader,
-  useSportsFont,
   currentStep,
   className,
 }: CheckoutWrapperProps) {
@@ -62,7 +54,7 @@ export default function CheckoutWrapper({
 
   return (
     <div
-      className={`mx-5 flex h-full flex-col ${useSportsFont && sportsFont.className}`}
+      className="mx-5 flex h-full flex-col"
     >
       {currentStep !== (null || undefined) && <Progress value={(currentStep / 8) * 100} />}
       {title ? (
