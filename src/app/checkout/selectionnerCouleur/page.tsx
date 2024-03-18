@@ -9,6 +9,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import fieldIds from '@/globals/fieldIds';
 import { playerObject } from '@/globals/defaultPlayer';
 import PlayerInfo from '@/components/checkout/PlayerInfo';
+import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 
 export default function SelectColor() {
   const { color: colorId } = fieldIds;
@@ -34,7 +35,7 @@ export default function SelectColor() {
   return (
     <CheckoutWrapper
       currentStep={5}
-      title="pick text color"
+      customHeader={<MiniPrevisualization />}
       primaryButton={{
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleurDuBande',
