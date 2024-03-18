@@ -29,7 +29,7 @@ export default function SwitchForm({form}: SwitchFormProps) {
           name="includeNumber"
           render={({ field }) => (
             <FormItem className="flex flex-row items-center justify-between ">
-              <FormLabel className="text-base">Numèro</FormLabel>
+              <FormLabel className="text-base">Avec numèro</FormLabel>
               <FormControl>
                 <Switch
                   checked={field.value}
@@ -44,7 +44,7 @@ export default function SwitchForm({form}: SwitchFormProps) {
           name="includeName"
           render={({ field }) => (
             <FormItem className="flex flex-row items-center justify-between">
-              <FormLabel className="text-base">Nom du joueur</FormLabel>
+              <FormLabel className="text-base">Avec nom du joueur</FormLabel>
 
               <FormControl>
                 <Switch
