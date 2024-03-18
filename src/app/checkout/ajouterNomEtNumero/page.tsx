@@ -12,8 +12,14 @@ import { useForm } from 'react-hook-form';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import { ChangeEvent } from 'react';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
+import localFont from 'next/font/local';
 import styles from './Input.module.css';
 import { playerObject } from '../../../globals/defaultPlayer';
+
+const sportsFont = localFont({
+  src: '../../../../public/fonts/OctinSportsHv.otf',
+  display: 'swap',
+});
 
 const FormSchema = z.object({
   includeNumber: z.boolean().default(true).optional(),
@@ -59,13 +65,12 @@ export default function SelectNameAndNumber() {
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleur',
       }}
-      useSportsFont
     >
       <div className="flex h-full flex-col items-center justify-center gap-10">
         {getValues().includeNumber && (
           <input
             type="text"
-            className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput}`}
+            className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.number}
             name={numberId.toString()}
             value={customizationFields[numberId]}
@@ -75,7 +80,7 @@ export default function SelectNameAndNumber() {
         {getValues().includeName && (
           <input
             type="text"
-            className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput}`}
+            className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.name}
             name={nameId.toString()}
             value={customizationFields[nameId]}
