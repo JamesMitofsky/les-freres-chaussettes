@@ -37,9 +37,9 @@ export function GradientPicker({ setHexColor }: GradiantPickerProps) {
       <CirclePicker
         colors={[...possibleColors]}
         width="100%"
-        circleSpacing={30}
+        circleSpacing={40}
         circleSize={30}
-        className="max-w-80 justify-center"
+        className="max-w-md justify-center"
         onChangeComplete={handleColorChange}
       />
     </div>
