@@ -38,7 +38,7 @@ export default function SelectBandColor() {
       currentStep={5}
       primaryButton={{
         label: 'Continuer',
-        relativePathToNextPage: 'selectionnerCouleurDuBande',
+        relativePathToNextPage: 'quelleTaille',
       }}
       customHeader={<MiniPrevisualization />}
       className="items-center justify-around"
