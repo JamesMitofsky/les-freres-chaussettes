@@ -8,10 +8,11 @@ import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
 import useLocalStorageState from 'use-local-storage-state';
 import fieldIds from '@/globals/fieldIds';
 import { playerObject } from '@/globals/defaultPlayer';
-import SockBandPreview from '@/components/checkout/SockBandPreview';
+import PlayerInfo from '@/components/checkout/PlayerInfo';
 
 export default function SelectColor() {
   const { color: colorId } = fieldIds;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pendingOrder, setPendingOrder] =
   useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
     defaultValue: playerObject,
@@ -29,8 +30,6 @@ export default function SelectColor() {
     },
     [setPendingOrder, colorId],
     );
-    
-    const { customizationFields } = pendingOrder;
 
   return (
     <CheckoutWrapper
@@ -42,7 +41,7 @@ export default function SelectColor() {
       }}
       className="items-center justify-around"
     >
-      <SockBandPreview color={customizationFields[colorId]} />
+      <PlayerInfo />
       <GradientPicker setHexColor={handleColorSetting} />
     </CheckoutWrapper>
   );

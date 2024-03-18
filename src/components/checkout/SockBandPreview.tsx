@@ -1,3 +1,5 @@
+import PlayerInfo from "./PlayerInfo";
+
 type SockBandPreviewProps = { color: string | undefined };
 
 export default function SockBandPreview({ color }: SockBandPreviewProps) {    
@@ -11,6 +13,7 @@ export default function SockBandPreview({ color }: SockBandPreviewProps) {
         className="mt-4 h-16 w-16"
         style={{ backgroundColor: color }}
       />
+      <PlayerInfo />
       <div
         className="mt-4 h-8 w-16"
         style={{ backgroundColor: color }}
