@@ -10,6 +10,7 @@ const ORDERS = gql`
 query($filters: [OrderStatus!]!){
   orders(filters: $filters) {
     id
+    createdDate
     orderStatus
     totalPrice
     shippingCost
@@ -26,10 +27,20 @@ query($filters: [OrderStatus!]!){
       }
     }
     products {
+      id
       quantity
       base {
         id
         size
+      }
+      customizationValues {
+        id
+        field {
+          id
+          name
+          type
+        }
+        value
       }
     }
   }
@@ -49,7 +60,7 @@ export default function Admin() {
         <div className="container flex flex-col gap-4">
           {data.orders.map((order : Order) => {
             return (
-              <OrderListElement order={order} />
+              <OrderListElement order={order} key={order.id}/>
             )
           })}
         </div>

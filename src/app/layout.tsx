@@ -1,11 +1,12 @@
 'use client'
 
-import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 // import type { Metadata } from 'next';
 import './globals.css';
 import GlobalHeader from '@/components/GlobalHeader';
 
 import createApolloClient from '@/apollo-client';
+import { useEffect, useState } from 'react';
 
 // export const metadata: Metadata = {
 //   title: 'Les Frères Chaussettes',
@@ -22,10 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ApolloProvider client={createApolloClient()}>
-          <body>
-            <GlobalHeader />
-            <main className="flex-grow">{children}</main>
-          </body>
+        <body>
+          <GlobalHeader />
+          <main className="flex-grow">{children}</main>
+        </body>
       </ApolloProvider>
     </html>
   );

@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+import Base from "./base";
+import CustomizationField from "./customizationField";
+import CustomizationValue from "./customizationValues";
+
 /** @example
  * const exampleOrder: ServerCustomizedPairOfSocks = {
     quantity: 1,
@@ -26,7 +30,7 @@ type ServerCustomizedPairOfSocks = {
       quantity: 1,
       productId: 1,
       baseId: sockSizeIds.small,
-      customizationFields: {
+      customizationValues: {
         [fieldIds.number]: '10',
         [fieldIds.name]: 'Loan',
         [fieldIds.color]: '#00000',
@@ -36,13 +40,11 @@ type ServerCustomizedPairOfSocks = {
   };
  */
 type CustomizedPairOfSocks = {
+  id ?: number
   quantity: number;
   productId: number;
-  base: {
-    id: number,
-    size: string
-  };
-  customizationFields: Record<number, string | undefined>;
+  base: Base;
+  customizationValues: CustomizationValue[];
 };
 
 export default CustomizedPairOfSocks;
