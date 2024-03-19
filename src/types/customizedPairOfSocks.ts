@@ -38,7 +38,10 @@ type ServerCustomizedPairOfSocks = {
 type CustomizedPairOfSocks = {
   quantity: number;
   productId: number;
-  baseId: number | undefined;
+  base: {
+    id: number,
+    size: string
+  };
   customizationFields: Record<number, string | undefined>;
 };
 
