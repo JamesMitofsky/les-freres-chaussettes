@@ -21,7 +21,6 @@ export default function Login() {
   const [password, setPassword] = useState("")
 
   const handleLogin = async () => {
-    console.log('loging in')
     await login({
       variables: {
         password

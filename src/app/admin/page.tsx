@@ -5,6 +5,7 @@ import { OrderStatus } from "@/types/orderStatus";
 import { useState } from "react";
 import { OrderListElement } from "@/components/admin/OrderListElement";
 import Order from "@/types/order";
+import { BackSockPreviewInput } from "@/components/shared/BackSockPreview";
 
 const ORDERS = gql`
 query($filters: [OrderStatus!]!){
@@ -58,9 +59,9 @@ export default function Admin() {
         <div className="container">CHOIX DES FILTRES ICI</div>
         {/* Orders wrapper */}
         <div className="container flex flex-col gap-4">
-          {data.orders.map((order : Order) => {
+          {data.orders.map((order: Order) => {
             return (
-              <OrderListElement order={order} key={order.id}/>
+              <OrderListElement order={order} key={order.id} />
             )
           })}
         </div>
