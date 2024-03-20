@@ -4,12 +4,31 @@ import fieldIds from './fieldIds';
 export const playerObject: CustomizedPairOfSocks = {
   quantity: 1,
   productId: 1,
-  baseId: undefined,
-  customizationFields: {
-    [fieldIds.number]: '',
-    [fieldIds.name]: '',
-    [fieldIds.color]: '#9ca3af',
-    [fieldIds.bandColor]: '#9ca3af',
-    [fieldIds.image]: '/images/example-logo.png',
-  },
+  base: undefined,
+  customizationValues: [
+    {
+      field: {
+        id: fieldIds.number,
+      },
+      value: undefined
+    },
+    {
+      field: {
+        id: fieldIds.name,
+      },
+      value: undefined
+    },
+    {
+      field: {
+        id: fieldIds.color,
+      },
+      value: "#000000"
+    },
+    {
+      field: {
+        id: fieldIds.bandColor,
+      },
+      value: "#000000"
+    },
+  ],
 };

@@ -31,21 +31,23 @@ export default function SelectNameAndNumber() {
     useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
       defaultValue: playerObject,
     });
-
-  const { customizationFields } = pendingOrder;
+  const { customizationValues } = pendingOrder;
 
   const { name: nameId, number: numberId } = fieldIds;
 
   const updateTextInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name: customizedFieldId } = e.target;
 
-    setPendingOrder((prevOrder) => ({
-      ...prevOrder,
-      customizationFields: {
-        ...prevOrder.customizationFields,
-        [customizedFieldId]: value !== null ? value : '',
-      },
-    }));
+    setPendingOrder((prevOrder: CustomizedPairOfSocks) => {
+      const newCustomiziationValues = prevOrder.customizationValues.slice();
+      const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id.toString() == customizedFieldId);
+      value !== null ? newCustomiziationValues[indexOfChangingCustomizationValue].value = value : newCustomiziationValues[indexOfChangingCustomizationValue].value = ''
+      return ({
+        ...prevOrder,
+        newCustomiziationValues
+      })
+    }
+    );
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -73,7 +75,7 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.number}
             name={numberId.toString()}
-            value={customizationFields[numberId]}
+            value={customizationValues.find(v => v.field.id == fieldIds.number)?.value}
             onChange={updateTextInput}
           />
         )}
@@ -83,7 +85,7 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.name}
             name={nameId.toString()}
-            value={customizationFields[nameId]}
+            value={customizationValues.find(v => v.field.id == fieldIds.name)?.value}
             onChange={updateTextInput}
           />
         )}

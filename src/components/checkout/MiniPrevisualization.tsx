@@ -8,18 +8,18 @@ import PlayerInfo from './PlayerInfo';
 
 function MiniPrevisualization() {
   const [pendingOrder] =
-  useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
-    defaultValue: playerObject,
-  });
+    useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
+      defaultValue: playerObject,
+    });
 
   const { image: imageId } = fieldIds;
 
-  const { customizationFields } = pendingOrder;
+  const { customizationValues } = pendingOrder;
 
   return (
     <div className="flex w-full justify-between px-5">
       <Image
-        src={customizationFields[imageId] || ''}
+        src={customizationValues.find(v => v.field.id == fieldIds.image)?.value || ''}
         alt="Votre marque de chaussettes"
         className="object-contain"
         width={50}

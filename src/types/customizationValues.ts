@@ -1,9 +1,9 @@
 import CustomizationField from "./customizationField";
 
 type CustomizationValue = {
-    id: number
+    id?: number
     field: CustomizationField; //The field linked to this value 
-    value: string;
+    value?: string;
 }
 
 export default CustomizationValue
