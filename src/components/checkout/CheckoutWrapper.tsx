@@ -11,29 +11,16 @@ type CheckoutButtonProps = {
   relativePathToNextPage: string;
 };
 
-type CommonCheckoutWrapperProps = {
+type CommonCheckoutWrapperProps = Readonly<{
   primaryButton?: CheckoutButtonProps;
   secondaryButton?: CheckoutButtonProps;
   children: React.ReactNode;
   currentStep?: number;
   className?: string;
-};
-
-export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
-  title: string;
+  title?: string;
   subtitle?: string;
-  customHeader?: never;
-};
-
-type CheckoutWithCustomHeader = CommonCheckoutWrapperProps & {
-  customHeader: React.ReactNode;
-  title?: never;
-  subtitle?: never;
-};
-
-type CheckoutWrapperProps = Readonly<
-  CheckoutWithTitle | CheckoutWithCustomHeader
->;
+  customHeader?: React.ReactNode;
+}>;
 
 export default function CheckoutWrapper({
   primaryButton,
@@ -44,7 +31,7 @@ export default function CheckoutWrapper({
   customHeader,
   currentStep,
   className,
-}: CheckoutWrapperProps) {
+}: CommonCheckoutWrapperProps) {
   const { push } = useRouter();
 
   const generateButtonProps = (button: CheckoutButtonProps) => ({
@@ -57,14 +44,9 @@ export default function CheckoutWrapper({
       className="mx-5 flex h-full flex-col"
     >
       {currentStep !== (null || undefined) && <Progress value={(currentStep / 8) * 100} />}
-      {title ? (
-        <>
-          <TypographyH1 text={title} />
-          {subtitle && <Subtitle text={subtitle} />}
-        </>
-      ) : (
-        customHeader
-      )}
+      {customHeader && customHeader}
+      {title && <TypographyH1 text={title} />}
+      {subtitle && <Subtitle text={subtitle} />}
       <main className={`relative flex h-full w-full flex-col ${className}`}>{children}</main>
       {primaryButton && (
         <ActionButtons

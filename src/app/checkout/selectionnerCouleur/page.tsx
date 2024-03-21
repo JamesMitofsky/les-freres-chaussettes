@@ -37,6 +37,7 @@ export default function SelectColor() {
     <CheckoutWrapper
       currentStep={5}
       customHeader={<MiniPrevisualization />}
+      title="Sélectionner la couleur du nom et du numéro"
       primaryButton={{
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleurDuBande',

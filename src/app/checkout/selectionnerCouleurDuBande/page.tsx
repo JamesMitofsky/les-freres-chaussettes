@@ -39,6 +39,7 @@ export default function SelectBandColor() {
         label: 'Continuer',
         relativePathToNextPage: 'quelleTaille',
       }}
+      title="Sélectionner la couleur des bandes"
       customHeader={<MiniPrevisualization />}
       className="items-center justify-around"
     >
