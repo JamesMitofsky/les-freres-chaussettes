@@ -22,38 +22,38 @@ export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ p
     const bandColor: string = product.customizationValues.find(element => element.field.id == fieldIds.bandColor)?.value || "black";
     const logo: string = "https://assets-global.website-files.com/64bd0fd50a57a73047957f5c/64bd10b10fce1736305b6322_logo-swiv.png";
 
-    const toPrintComponent = []
-    for (let i = 0; i < product.quantity; i++) {
-        toPrintComponent.push(
-            <BackSockPreview
-                data={{
-                    playerName: name,
-                    playerNumber: number,
-                    bandsColor: bandColor,
-                    textColor: color
-                }} />
-        )
-        toPrintComponent.push(
-            <BackSockPreview
-                data={{
-                    playerName: name,
-                    playerNumber: number,
-                    bandsColor: bandColor,
-                    textColor: color
-                }} />
-        )
-    }
-    for (let i = 0; i < product.quantity; i++) {
-        toPrintComponent.push(
-            <FrontSockPreview data={{ logo_url: logo }} />
-        )
-        toPrintComponent.push(
-            <FrontSockPreview data={{ logo_url: logo }} />
-        )
-    }
+    // const toPrintComponent = []
+    // for (let i = 0; i < product.quantity; i++) {
+    //     toPrintComponent.push(
+    //         <BackSockPreview
+    //             data={{
+    //                 playerName: name,
+    //                 playerNumber: number,
+    //                 bandsColor: bandColor,
+    //                 textColor: color
+    //             }} />
+    //     )
+    //     toPrintComponent.push(
+    //         <BackSockPreview
+    //             data={{
+    //                 playerName: name,
+    //                 playerNumber: number,
+    //                 bandsColor: bandColor,
+    //                 textColor: color
+    //             }} />
+    //     )
+    // }
+    // for (let i = 0; i < product.quantity; i++) {
+    //     toPrintComponent.push(
+    //         <FrontSockPreview data={{ logo_url: logo }} />
+    //     )
+    //     toPrintComponent.push(
+    //         <FrontSockPreview data={{ logo_url: logo }} />
+    //     )
+    // }
     return (
         <div>
-            <div><p className='font-semibold'>{product.quantity}x {product.base.size}</p></div>
+            <div><p className='font-semibold'>{product.quantity}x {product.base?.size}</p></div>
             <div className='border rounded flex items-center'>
                 <div className='flex flex-col items-center p-3 gap-3'>
                     <div
@@ -77,7 +77,7 @@ export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ p
                     <img className="aspect-square object-scale-down w-32" src={logo} />
                 </div>
             </div>
-            <div style={{ display: "none" }}>
+            {/* <div style={{ display: "none" }}>
                 <div ref={refToPrint} style={{transform: 'scaleX(-1)'}}>
                     {toPrintComponent}
                 </div>
@@ -89,7 +89,7 @@ export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ p
                     <Button>
                         Imprimer
                     </Button>
-                )} />
+                )} /> */}
         </div>
 
     )

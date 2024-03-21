@@ -1,5 +1,5 @@
-import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
-import { getMainDefinition } from "@apollo/client/utilities";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { serverUrl } from "./globals/serverUrl";
 import { useEffect, useState } from "react";
 
 export const useConfigClient = () => {
@@ -15,7 +15,7 @@ export const useConfigClient = () => {
 
 
     const client = new ApolloClient({
-        uri: "http://localhost:4000/graphql",
+        uri: `${serverUrl}/graphql`,
         cache: new InMemoryCache(),
         headers: {
             authorization: `Bearer ${authTokenStorage}`,

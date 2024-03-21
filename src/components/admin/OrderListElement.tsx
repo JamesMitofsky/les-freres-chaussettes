@@ -11,14 +11,36 @@ import FrontSockPreview from "../shared/FrontSockPreview";
 import ReactToPrint from "react-to-print";
 import { useRef } from "react";
 
-export const OrderListElement: React.FC<{ order: Order }> = ({ order }) => {
+export const OrderListElement: React.FC<{
+    order: Order,
+    selectedOrders: Order[],
+    setSelectedOrders: React.Dispatch<React.SetStateAction<Order[]>>;
+}> = ({ order, selectedOrders, setSelectedOrders }) => {
     const refToPrint = useRef<HTMLDivElement>(null);
     const numberOfPairs = computeNumberOfPairs(order);
+
+    const handleSelectOrder = (isChecked: boolean) => {
+        let orderIndex: number = -1;
+        if (isChecked) {
+            // Vérifier si la commande est déjà présente dans selectedOrders
+            orderIndex = selectedOrders.findIndex(o => o.id === order.id);
+            // si la commande n'est pas présente on l'ajoute
+            if (orderIndex == -1) {
+                setSelectedOrders(prevSelectedOrders => [...prevSelectedOrders, order]);
+            }
+        } else {
+            const updatedSelectedOrders = [...selectedOrders];
+            updatedSelectedOrders.splice(orderIndex, 1);
+            setSelectedOrders(updatedSelectedOrders);
+        }
+    };
+
     return (
         <div className="flex flex-col rounded border border-gray-500 p-3 divide-y">
             <div className="flex justify-stretch">
                 <div className="left-side flex-1">
-                    <div className="id-and-status flex gap-1">
+                    <div className="flex id-and-status flex gap-1 items-center">
+                        <input onChange={(e) => handleSelectOrder(e.target.checked)} id="default-checkbox" type="checkbox" value="" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <p className="text-xl font-bold">Commande #{order.id}</p>
                         <OrderStatusBadge orderStatus={order.orderStatus} />
                     </div>
@@ -48,7 +70,7 @@ export const OrderListElement: React.FC<{ order: Order }> = ({ order }) => {
             <div className="under-side py-2 flex gap-5">
                 {order.products.map(product => <SockSmallPreviewAndPrint product={product} key={product.id} />)}
             </div>
-            <div>
+            {/* <div>
                 <div style={{ display: "none" }}>
                     <div ref={refToPrint} style={{ transform: 'scaleX(-1)' }}>
                         {order.products.map(product => {
@@ -92,7 +114,7 @@ export const OrderListElement: React.FC<{ order: Order }> = ({ order }) => {
                     <Button>
                         Imprimer
                     </Button>
-                )} />
+                )} /> */}
         </div>
     )
 };

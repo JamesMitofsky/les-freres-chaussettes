@@ -6,6 +6,7 @@ import { useState } from "react";
 import { OrderListElement } from "@/components/admin/OrderListElement";
 import Order from "@/types/order";
 import { BackSockPreviewInput } from "@/components/shared/BackSockPreview";
+import { ToolBar } from "@/components/admin/ToolBar";
 
 const ORDERS = gql`
 query($filters: [OrderStatus!]!){
@@ -51,17 +52,18 @@ query($filters: [OrderStatus!]!){
 export default function Admin() {
   const [filters, setFilters] = useState(["TO_PRODUCE"]);
   const { loading, error, data } = useQuery(ORDERS, { variables: { filters } });
+  const [selectedOrders, setSelectedOrders] = useState<Order[]>([]);
   if (loading) return <>Chargement des commandes en cours</>
   if (error) return <>Une erreur s'est produite lors du chargement des données</>
   if (data) {
     return (
       <div className="container xl mx-auto">
-        <div className="container">CHOIX DES FILTRES ICI</div>
+          <ToolBar selectedOrders={selectedOrders} />
         {/* Orders wrapper */}
-        <div className="container flex flex-col gap-4">
+        <div className="flex flex-col gap-4">
           {data.orders.map((order: Order) => {
             return (
-              <OrderListElement order={order} key={order.id} />
+              <OrderListElement order={order} key={order.id} selectedOrders={selectedOrders} setSelectedOrders={setSelectedOrders} />
             )
           })}
         </div>
