@@ -75,7 +75,7 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.number}
             name={numberId.toString()}
-            value={customizationValues.find(v => v.field.id == fieldIds.number)?.value}
+            value={customizationValues.find(v => v.field.id === fieldIds.number)?.value}
             onChange={updateTextInput}
           />
         )}
@@ -85,7 +85,7 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.name}
             name={nameId.toString()}
-            value={customizationValues.find(v => v.field.id == fieldIds.name)?.value}
+            value={customizationValues.find(v => v.field.id === fieldIds.name)?.value}
             onChange={updateTextInput}
           />
         )}
