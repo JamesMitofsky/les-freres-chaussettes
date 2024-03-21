@@ -8,12 +8,10 @@ import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
 import useLocalStorageState from 'use-local-storage-state';
 import fieldIds from '@/globals/fieldIds';
 import { playerObject } from '@/globals/defaultPlayer';
-import SockBandPreview from '@/components/checkout/SockBandPreview';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import BackSockPreview from '@/components/shared/BackSockPreview';
 
 export default function SelectBandColor() {
-  const { bandColor: bandColorId } = fieldIds;
   const [pendingOrder, setPendingOrder] =
     useLocalStorageState<CustomizedPairOfSocks>(pendingOrderKey, {
       defaultValue: playerObject,
@@ -23,7 +21,7 @@ export default function SelectBandColor() {
     (color: AllowedColors) => {
       setPendingOrder((prevOrder) => {
         const newCustomiziationValues = prevOrder.customizationValues.slice();
-        const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id == fieldIds.bandColor);
+        const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id === fieldIds.bandColor);
         newCustomiziationValues[indexOfChangingCustomizationValue].value = color;
         return ({
           ...prevOrder,
@@ -31,10 +29,8 @@ export default function SelectBandColor() {
         })
       });
     },
-    [setPendingOrder, bandColorId],
+    [setPendingOrder],
   );
-
-  const { customizationValues } = pendingOrder;
 
   return (
     <CheckoutWrapper
@@ -47,10 +43,10 @@ export default function SelectBandColor() {
       className="items-center justify-around"
     >
       <BackSockPreview data={{
-        bandsColor: pendingOrder.customizationValues.find(v => v.field.id == fieldIds.bandColor)?.value || "black",
-        textColor: pendingOrder.customizationValues.find(v => v.field.id == fieldIds.color)?.value || "black",
-        playerNumber: pendingOrder.customizationValues.find(v => v.field.id == fieldIds.number)?.value || "10",
-        playerName: pendingOrder.customizationValues.find(v => v.field.id == fieldIds.name)?.value || "Joueur"
+        bandsColor: pendingOrder.customizationValues.find(v => v.field.id === fieldIds.bandColor)?.value || "black",
+        textColor: pendingOrder.customizationValues.find(v => v.field.id === fieldIds.color)?.value || "black",
+        playerNumber: pendingOrder.customizationValues.find(v => v.field.id === fieldIds.number)?.value || "10",
+        playerName: pendingOrder.customizationValues.find(v => v.field.id === fieldIds.name)?.value || "Joueur"
       }} />
       <GradientPicker setHexColor={handleColorSetting} />
     </CheckoutWrapper>
