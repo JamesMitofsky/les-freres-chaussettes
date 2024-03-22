@@ -20,6 +20,16 @@ export const useConfigClient = () => {
         headers: {
             authorization: `Bearer ${authTokenStorage}`,
         },
+        defaultOptions: {
+            watchQuery: {
+                fetchPolicy: 'no-cache',
+                errorPolicy: 'ignore',
+            },
+            query: {
+                fetchPolicy: 'no-cache',
+                errorPolicy: 'all',
+            },
+        }
     });
 
     return client;

@@ -50,15 +50,17 @@ query($filters: [OrderStatus!]!){
 `
 
 export default function Admin() {
-  const [filters, setFilters] = useState(["TO_PRODUCE"]);
-  const { loading, error, data } = useQuery(ORDERS, { variables: { filters } });
+  const [filters, setFilters] = useState(["TO_PRODUCE", "IN_PRODUCTION", "SHIPPED"]);
+  const { loading, error, data, refetch } = useQuery(ORDERS, { variables: { filters } });
+
   const [selectedOrders, setSelectedOrders] = useState<Order[]>([]);
   if (loading) return <>Chargement des commandes en cours</>
   if (error) return <>Une erreur s'est produite lors du chargement des données</>
   if (data) {
+    console.log(selectedOrders)
     return (
       <div className="container xl mx-auto">
-          <ToolBar selectedOrders={selectedOrders} />
+        <ToolBar selectedOrders={selectedOrders} refetch={refetch}/>
         {/* Orders wrapper */}
         <div className="flex flex-col gap-4">
           {data.orders.map((order: Order) => {

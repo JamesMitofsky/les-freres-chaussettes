@@ -4,11 +4,6 @@ import { computeNumberOfPairs } from "@/utils/computeNumberOfPairs";
 import 'moment/locale/fr';
 import Moment from "react-moment"
 import { SockSmallPreviewAndPrint } from "./SockSmallPreviewAndPrint";
-import { Button } from "../ui/button";
-import BackSockPreview from "../shared/BackSockPreview";
-import fieldIds from "@/globals/fieldIds";
-import FrontSockPreview from "../shared/FrontSockPreview";
-import ReactToPrint from "react-to-print";
 import { useRef } from "react";
 
 export const OrderListElement: React.FC<{
@@ -21,10 +16,8 @@ export const OrderListElement: React.FC<{
 
     const handleSelectOrder = (isChecked: boolean) => {
         let orderIndex: number = -1;
+        orderIndex = selectedOrders.findIndex(o => o.id === order.id);
         if (isChecked) {
-            // Vérifier si la commande est déjà présente dans selectedOrders
-            orderIndex = selectedOrders.findIndex(o => o.id === order.id);
-            // si la commande n'est pas présente on l'ajoute
             if (orderIndex == -1) {
                 setSelectedOrders(prevSelectedOrders => [...prevSelectedOrders, order]);
             }
