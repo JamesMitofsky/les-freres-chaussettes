@@ -1,10 +1,12 @@
 import Order from "@/types/order";
-import { Button } from "../ui/button";
-import { serverUrl } from "@/globals/serverUrl";
-import { Loader } from "../ui/Loader";
 import { useState } from "react";
+import { serverUrl } from "@/globals/serverUrl";
+import { Button } from "../ui/button";
+import { Loader } from "../ui/Loader";
+import { SelectFilter } from "./SelectFilter";
+import { UpdateOrdersStatus } from "./UpdateOrdersStatus";
 
-export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any }> = ({ selectedOrders, refetch }) => {
+export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any, filters: string[], setFilters: React.Dispatch<React.SetStateAction<string[]>> }> = ({ selectedOrders, refetch, filters, setFilters }) => {
     const [designsLoading, setDesignsLoadings] = useState(false)
     const [timbresLoading, setTimbresLoadings] = useState(false)
     const handlePrintDesigns = async () => {
@@ -17,7 +19,7 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any }> = ({ s
             const requestBody = JSON.stringify({ orderIds });
 
             // Envoyer une requête POST au serveur pour générer les PDF des designs
-            const response = await fetch(serverUrl + '/pdf/generate-pdf', {
+            const response = await fetch(`${serverUrl}/pdf/generate-pdf`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -119,8 +121,8 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any }> = ({ s
                 <Button disabled={selectedOrders.length < 1} onClick={handlePrintDesigns} className="w-40">{designsLoading ? <Loader /> : "Imprimer Designs"}</Button>
                 <Button disabled={selectedOrders.length < 1} onClick={handlePrintTimbres} className="w-40">{timbresLoading ? <Loader /> : "Imprimer Timbres"}</Button>
             </div>
+            <SelectFilter filters={filters} setFilters={setFilters} />
+            <UpdateOrdersStatus selectedOrders={selectedOrders} refetch={refetch}/>
         </div>
-
-
     )
 }

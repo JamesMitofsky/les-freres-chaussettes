@@ -1,12 +1,11 @@
 'use client'
 
 import { useQuery, gql } from "@apollo/client";
-import { OrderStatus } from "@/types/orderStatus";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OrderListElement } from "@/components/admin/OrderListElement";
 import Order from "@/types/order";
-import { BackSockPreviewInput } from "@/components/shared/BackSockPreview";
 import { ToolBar } from "@/components/admin/ToolBar";
+import { Loader } from "@/components/ui/Loader";
 
 const ORDERS = gql`
 query($filters: [OrderStatus!]!){
@@ -15,6 +14,7 @@ query($filters: [OrderStatus!]!){
     createdDate
     orderStatus
     totalPrice
+    comment
     shippingCost
     customer {
       name
@@ -50,25 +50,36 @@ query($filters: [OrderStatus!]!){
 `
 
 export default function Admin() {
-  const [filters, setFilters] = useState(["TO_PRODUCE", "IN_PRODUCTION", "SHIPPED"]);
+  const [filters, setFilters] = useState(["TO_PRODUCE", "IN_PRODUCTION"]);
   const { loading, error, data, refetch } = useQuery(ORDERS, { variables: { filters } });
-
   const [selectedOrders, setSelectedOrders] = useState<Order[]>([]);
-  if (loading) return <>Chargement des commandes en cours</>
+
+  useEffect(() => {
+    // Si les filtres ont été modifiés par l'utilisateur, alors seulement refetch
+    if (!loading) {
+      refetch();
+    }
+  }, [filters, loading, refetch]);
+
+  if (loading) return (
+    <div className="container xl mx-auto">
+      <ToolBar selectedOrders={selectedOrders} refetch={refetch} filters={filters} setFilters={setFilters} />
+      <Loader />
+    </div>
+  )
   if (error) return <>Une erreur s'est produite lors du chargement des données</>
   if (data) {
-    console.log(selectedOrders)
     return (
       <div className="container xl mx-auto">
-        <ToolBar selectedOrders={selectedOrders} refetch={refetch}/>
+        <ToolBar selectedOrders={selectedOrders} refetch={refetch} filters={filters} setFilters={setFilters} />
         {/* Orders wrapper */}
-        <div className="flex flex-col gap-4">
-          {data.orders.map((order: Order) => {
-            return (
+        {!loading &&
+          <div className="flex flex-col gap-4">
+            {data.orders.map((order: Order) => (
               <OrderListElement order={order} key={order.id} selectedOrders={selectedOrders} setSelectedOrders={setSelectedOrders} />
-            )
-          })}
-        </div>
+            ))}
+          </div>
+        }
       </div>
     )
   }

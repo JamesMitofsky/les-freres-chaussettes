@@ -5,8 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 import { gql, useMutation } from '@apollo/client';
-import useAuthState from '@/hooks/useAuthState';
-import { useRouter } from 'next/router';
 
 const LOGIN_MUTATION = gql`
   mutation($password: String!){

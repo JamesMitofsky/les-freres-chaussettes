@@ -12,6 +12,7 @@ type Order =  {
     orderStatus: OrderStatus
     stripeSessionId: string
     createdDate: Date
+    comment:string
 }
 
 export default Order;

@@ -5,13 +5,15 @@ import 'moment/locale/fr';
 import Moment from "react-moment"
 import { SockSmallPreviewAndPrint } from "./SockSmallPreviewAndPrint";
 import { useRef } from "react";
+import Link from "next/link";
+import { Comment } from "../ui/comment";
 
 export const OrderListElement: React.FC<{
     order: Order,
     selectedOrders: Order[],
     setSelectedOrders: React.Dispatch<React.SetStateAction<Order[]>>;
 }> = ({ order, selectedOrders, setSelectedOrders }) => {
-    const refToPrint = useRef<HTMLDivElement>(null);
+    // const refToPrint = useRef<HTMLDivElement>(null);
     const numberOfPairs = computeNumberOfPairs(order);
 
     const handleSelectOrder = (isChecked: boolean) => {
@@ -34,16 +36,17 @@ export const OrderListElement: React.FC<{
                 <div className="left-side flex-1">
                     <div className="flex id-and-status flex gap-1 items-center">
                         <input onChange={(e) => handleSelectOrder(e.target.checked)} id="default-checkbox" type="checkbox" value="" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <p className="text-xl font-bold">Commande #{order.id}</p>
+                        <Link href={`/admin/order/${order.id}`}><p className="text-xl font-bold">Commande #{order.id}</p></Link>
                         <OrderStatusBadge orderStatus={order.orderStatus} />
                     </div>
-                    <div>
+                    <div className="py-3">
                         <Moment date={order.createdDate} locale="fr" format="DD/MM/YYYY hh:mm" />
                         <p>Prix total : {order.totalPrice / 100}€ | Prix livraison : {order.shippingCost / 100}€</p>
                         {order.customer && <p>{order.customer.name}</p>}
                         {order.customer && <p>{order.customer.shippingDetails?.address}</p>}
                         {order.customer && <p>{order.customer.shippingDetails?.address_second_line}</p>}
                         {order.customer && <p>{order.customer.shippingDetails?.zipCode} {order.customer.shippingDetails?.city} {order.customer.shippingDetails?.country}</p>}
+                        {order.comment.length > 0 && <Comment comment={order.comment} />}
                     </div>
                 </div>
 
