@@ -6,7 +6,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["JPG", "PNG"];
 
-export const UploadLogo: React.FC<{ children: ReactNode, isMultiple: boolean }> = ({ children, isMultiple }) => {
+export const UploadLogo: React.FC<{ children: ReactNode, isMultiple: boolean, onUrl: (url: string) => void }> = ({ children, isMultiple, onUrl }) => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleFileChange = async (files: File[]) => {
@@ -30,7 +30,9 @@ export const UploadLogo: React.FC<{ children: ReactNode, isMultiple: boolean }> 
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log(responseData);
+                if (!isMultiple) {
+                    onUrl(responseData.logo_url)
+                }
                 // Gérer la réponse du serveur si nécessaire
             } else {
                 throw new Error('Erreur lors de la requête serveur');
