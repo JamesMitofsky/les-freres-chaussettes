@@ -6,7 +6,6 @@ import { OrderListElement } from "@/components/admin/OrderListElement";
 import Order from "@/types/order";
 import { ToolBar } from "@/components/admin/ToolBar";
 import { Loader } from "@/components/ui/Loader";
-import { UploadLogo } from "@/components/shared/Upload/UploadLogo";
 
 const ORDERS = gql`
 query($filters: [OrderStatus!]!){
@@ -72,7 +71,6 @@ export default function Admin() {
   if (data) {
     return (
       <div className="container xl mx-auto">
-        <UploadLogo isMultiple>{null}</UploadLogo>
         <ToolBar selectedOrders={selectedOrders} refetch={refetch} filters={filters} setFilters={setFilters} />
         {/* Orders wrapper */}
         {!loading &&

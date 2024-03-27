@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Order from "@/types/order";
 import { useState } from "react";
 import { serverUrl } from "@/globals/serverUrl";
@@ -72,7 +73,7 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any, filters:
             const requestBody = JSON.stringify({ orderIds });
 
             // Envoyer une requête POST au serveur pour générer les PDF des designs
-            const response = await fetch(serverUrl + '/delivery/generate-timbres', {
+            const response = await fetch(`${serverUrl}/delivery/generate-timbres`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -122,7 +123,8 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any, filters:
                 <Button disabled={selectedOrders.length < 1} onClick={handlePrintTimbres} className="w-40">{timbresLoading ? <Loader /> : "Imprimer Timbres"}</Button>
             </div>
             <SelectFilter filters={filters} setFilters={setFilters} />
-            <UpdateOrdersStatus selectedOrders={selectedOrders} refetch={refetch}/>
+            <UpdateOrdersStatus selectedOrders={selectedOrders} refetch={refetch} />
+            <Link href="/admin/logo" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Gestion des logos LFC</Link>
         </div>
     )
 }
