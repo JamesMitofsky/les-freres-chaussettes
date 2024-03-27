@@ -1,9 +1,10 @@
 import Customer from './customer';
 import CartProduct from './customizedPairOfSocks';
+import { LaPoste } from './laPoste';
 import { OrderStatus } from './orderStatus';
 
 
-type Order =  {
+type Order = {
     id: number
     totalPrice: number;
     shippingCost: number;
@@ -12,7 +13,8 @@ type Order =  {
     orderStatus: OrderStatus
     stripeSessionId: string
     createdDate: Date
-    comment:string
+    comment: string
+    laPoste: LaPoste
 }
 
 export default Order;

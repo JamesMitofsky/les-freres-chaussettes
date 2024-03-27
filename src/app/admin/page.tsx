@@ -16,6 +16,9 @@ query($filters: [OrderStatus!]!){
     totalPrice
     comment
     shippingCost
+    laPoste{
+      suivi
+    }      
     customer {
       name
       email

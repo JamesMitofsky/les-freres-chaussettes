@@ -47,6 +47,7 @@ export const OrderListElement: React.FC<{
                         {order.customer && <p>{order.customer.shippingDetails?.address_second_line}</p>}
                         {order.customer && <p>{order.customer.shippingDetails?.zipCode} {order.customer.shippingDetails?.city} {order.customer.shippingDetails?.country}</p>}
                         {order.comment.length > 0 && <Comment comment={order.comment} />}
+                        {order.laPoste && <p>N° de suivi {order.laPoste.suivi}</p>}
                     </div>
                 </div>
 
@@ -54,11 +55,9 @@ export const OrderListElement: React.FC<{
                     <div className="flex flex-col">
                         <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.email}</span>
                         <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.phone}</span>
-                        {numberOfPairs.map(pair => {
-                            return (
+                        {numberOfPairs.map(pair => (
                                 <p><span className="font-semibold">{pair.base.size}</span> : x{pair.quantity}</p>
-                            )
-                        })}
+                            ))}
                     </div>
                 </div>
             </div>
