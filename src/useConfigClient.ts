@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { serverUrl } from "./globals/serverUrl";
-import { useEffect, useState } from "react";
 
 export const useConfigClient = () => {
     let defaultJWT: string | null = null;

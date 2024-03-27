@@ -2,7 +2,7 @@ import CustomizationField from "./customizationField";
 
 type CustomizationValue = {
     id?: number
-    field: CustomizationField; //The field linked to this value 
+    field: CustomizationField;
     value?: string;
 }
 

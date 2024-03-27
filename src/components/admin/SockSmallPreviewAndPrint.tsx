@@ -2,11 +2,12 @@ import fieldIds from '@/globals/fieldIds';
 import CartProduct from '@/types/customizedPairOfSocks';
 import localFont from 'next/font/local';
 import { gql, useMutation } from '@apollo/client';
-import BackSockPreview from '../shared/BackSockPreview';
-import ReactToPrint from "react-to-print"
-import { useRef } from 'react';
-import FrontSockPreview from '../shared/FrontSockPreview';
-import { Button } from '../ui/button';
+// import BackSockPreview from '../shared/BackSockPreview';
+// import ReactToPrint from "react-to-print"
+// import { useRef } from 'react';
+// import FrontSockPreview from '../shared/FrontSockPreview';
+// import { Button } from '../ui/button';
+import Image from 'next/image';
 import { UploadLogo } from '../shared/Upload/UploadLogo';
 import { Loader } from '../ui/Loader';
 
@@ -26,7 +27,7 @@ const UPDATE_CUSTOMIZATION_VALUE = gql`
 
 export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ product }) => {
     // TODO : If we add other products, we must switch on product id to adapt style and way to display
-    const refToPrint = useRef<HTMLDivElement>(null);
+    // const refToPrint = useRef<HTMLDivElement>(null);
 
     const [updateCustomizationValue, { data, loading }] = useMutation(UPDATE_CUSTOMIZATION_VALUE)
 
@@ -99,7 +100,7 @@ export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ p
 
                 <div>
                     <UploadLogo isMultiple={false} onUrl={handleUpdateCustomizationLogo}>
-                        <img className="aspect-square object-scale-down w-32" src={data ? data.updateCustomizationValue.value : logo} />
+                        <Image alt="logo-preview" className="aspect-square object-scale-down w-32" src={data ? data.updateCustomizationValue.value : logo} />
                     </UploadLogo>
                     {loading && <Loader />}
                 </div>

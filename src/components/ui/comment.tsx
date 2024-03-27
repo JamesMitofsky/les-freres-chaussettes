@@ -1,5 +1,4 @@
-export const Comment: React.FC<{ comment: string }> = ({ comment }) => {
-    return (
+export const Comment: React.FC<{ comment: string }> = ({ comment }) => (
         <div>
             <div className="py-2 px-3 border rounded bg-slate-50 border-slate-300">
                 <p className="font-semibold">Commentaire</p>
@@ -7,4 +6,3 @@ export const Comment: React.FC<{ comment: string }> = ({ comment }) => {
             </div>
         </div>
     )
-}

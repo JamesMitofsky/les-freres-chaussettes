@@ -65,16 +65,19 @@ const addToRemoveQueue = (toastId: string) => {
 
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId)
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     dispatch({
       type: "REMOVE_TOAST",
-      toastId: toastId,
+      toastId,
     })
   }, TOAST_REMOVE_DELAY)
 
   toastTimeouts.set(toastId, timeout)
 }
 
+// eslint-disable-next-line consistent-return
 export const reducer = (state: State, action: Action): State => {
+  // eslint-disable-next-line default-case
   switch (action.type) {
     case "ADD_TOAST":
       return {
@@ -98,8 +101,8 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
-        state.toasts.forEach((toast) => {
-          addToRemoveQueue(toast.id)
+        state.toasts.forEach((t) => {
+          addToRemoveQueue(t.id)
         })
       }
 
@@ -145,6 +148,7 @@ type Toast = Omit<ToasterToast, "id">
 function toast({ ...props }: Toast) {
   const id = genId()
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const update = (props: ToasterToast) =>
     dispatch({
       type: "UPDATE_TOAST",
@@ -165,7 +169,7 @@ function toast({ ...props }: Toast) {
   })
 
   return {
-    id: id,
+    id,
     dismiss,
     update,
   }

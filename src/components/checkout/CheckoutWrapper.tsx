@@ -22,6 +22,12 @@ type CommonCheckoutWrapperProps = Readonly<{
   customHeader?: React.ReactNode;
 }>;
 
+export type CheckoutWithTitle = CommonCheckoutWrapperProps & {
+  title: string;
+  subtitle?: string;
+  customHeader?: never;
+};
+
 export default function CheckoutWrapper({
   primaryButton,
   secondaryButton,

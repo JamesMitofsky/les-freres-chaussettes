@@ -1,10 +1,15 @@
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
 import fieldIds from './fieldIds';
+import baseIds from './baseIds';
 
 export const playerObject: CustomizedPairOfSocks = {
   quantity: 1,
   productId: 1,
-  base: undefined,
+  // TO CHANGE WHILE USER SELECT SIZE
+  base: {
+    id: baseIds.S,
+    size: "S"
+  },
   customizationValues: [
     {
       field: {

@@ -16,7 +16,7 @@ const LOGIN_MUTATION = gql`
 `
 
 export default function Login() {
-  let [login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  const [login] = useMutation(LOGIN_MUTATION);
   const [password, setPassword] = useState("")
 
   const handleLogin = async () => {
@@ -29,10 +29,8 @@ export default function Login() {
         localStorage.setItem("jwt", data.loginAdmin.accessToken)
         window.location.href = "/admin"
       },
-      onError: (err) => {
+      onError: () => {
         setPassword("")
-        console.log(err.message)
-        // TODO : show error message
       }
     })
   }

@@ -1,11 +1,13 @@
 import Order from "@/types/order";
+// eslint-disable-next-line import/order
 import { OrderStatusBadge } from "./OrderStatusBadge";
 import { computeNumberOfPairs } from "@/utils/computeNumberOfPairs";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'moment/locale/fr';
 import Moment from "react-moment"
-import { SockSmallPreviewAndPrint } from "./SockSmallPreviewAndPrint";
-import { useRef } from "react";
+// import { useRef } from "react";
 import Link from "next/link";
+import { SockSmallPreviewAndPrint } from "./SockSmallPreviewAndPrint";
 import { Comment } from "../ui/comment";
 
 export const OrderListElement: React.FC<{
@@ -20,7 +22,7 @@ export const OrderListElement: React.FC<{
         let orderIndex: number = -1;
         orderIndex = selectedOrders.findIndex(o => o.id === order.id);
         if (isChecked) {
-            if (orderIndex == -1) {
+            if (orderIndex === -1) {
                 setSelectedOrders(prevSelectedOrders => [...prevSelectedOrders, order]);
             }
         } else {
@@ -56,7 +58,7 @@ export const OrderListElement: React.FC<{
                         <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.email}</span>
                         <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.phone}</span>
                         {numberOfPairs.map(pair => (
-                                <p><span className="font-semibold">{pair.base.size}</span> : x{pair.quantity}</p>
+                                <p key={Math.random().toString()}><span className="font-semibold">{pair.base.size}</span> : x{pair.quantity}</p>
                             ))}
                     </div>
                 </div>

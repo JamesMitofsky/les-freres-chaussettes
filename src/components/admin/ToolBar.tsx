@@ -52,18 +52,15 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any, filters:
                 refetch()
             } else {
                 setDesignsLoadings(false)
-                console.error('La requête a échoué avec le statut :', response.status);
                 // Gérer l'erreur
             }
         } catch (error) {
             setDesignsLoadings(false)
-            console.error('Erreur lors de la génération des PDF des designs :', error);
             // Gérer l'erreur
         }
     };
 
     const handlePrintTimbres = async () => {
-        console.log('printing timbres')
         try {
             setTimbresLoadings(true)
             // Récupérer les IDs des commandes sélectionnées
@@ -105,12 +102,10 @@ export const ToolBar: React.FC<{ selectedOrders: Order[], refetch: any, filters:
                 refetch()
             } else {
                 setTimbresLoadings(false)
-                console.error('La requête a échoué avec le statut :', response.status);
                 // Gérer l'erreur
             }
         } catch (error) {
             setTimbresLoadings(false)
-            console.error('Erreur lors de la génération des PDF des designs :', error);
             // Gérer l'erreur
         }
     };

@@ -43,7 +43,7 @@ type CustomizedPairOfSocks = {
   id ?: number
   quantity: number;
   productId: number;
-  base?: Base;
+  base: Base;
   customizationValues: CustomizationValue[];
 };
 

@@ -1,12 +1,13 @@
 'use client'
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'moment/locale/fr';
 import { useEffect, useState } from "react"
 import { OrderStatusBadge } from "@/components/admin/OrderStatusBadge"
 import { Button } from "@/components/ui/button"
-import Order from "@/types/order"
 import { computeNumberOfPairs } from "@/utils/computeNumberOfPairs"
 import { gql, useMutation, useQuery } from "@apollo/client"
 import Moment from "react-moment"
-import 'moment/locale/fr';
 import { Loader } from "@/components/ui/Loader"
 
 const ORDER = gql`
@@ -60,7 +61,7 @@ const COMMENT_ORDER = gql`
 
 export default function Page({ params }: { params: { id: number } }) {
     const [comment, setComment] = useState("")
-    const { data, loading, error, refetch } = useQuery(ORDER, {
+    const { data, loading, error } = useQuery(ORDER, {
         variables: { orderId: Number(params.id) }
     })
     const [commentOrder, commentOrderResponse] = useMutation(COMMENT_ORDER);
@@ -83,7 +84,7 @@ export default function Page({ params }: { params: { id: number } }) {
         )
     }
     if (data) {
-        let order: Order = data.order;
+        const { order } = data;
         const numberOfPairs = computeNumberOfPairs(order);
         const handleSubmitComment = () => {
             commentOrder({
@@ -91,7 +92,7 @@ export default function Page({ params }: { params: { id: number } }) {
                     commentOrderId: order.id,
                     comment
                 },
-                onCompleted: (data) => {setComment(data.commentOrder.comment)}
+                onCompleted: (d) => { setComment(d.commentOrder.comment) }
             })
         }
 
@@ -117,26 +118,25 @@ export default function Page({ params }: { params: { id: number } }) {
                         <div className="flex flex-col">
                             <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.email}</span>
                             <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{order.customer && order.customer?.phone}</span>
-                            {numberOfPairs.map(pair => {
-                                return (
-                                    <p><span className="font-semibold">{pair.base.size}</span> : x{pair.quantity}</p>
-                                )
-                            })}
+                            {numberOfPairs.map(pair => (
+                                <p key={Math.random().toString()}><span className="font-semibold">{pair.base.size}</span> : x{pair.quantity}</p>
+                            ))}
                         </div>
                     </div>
                 </div>
 
                 <div className="py-5">
                     <div className="">
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Commentaire</label>
-                        <textarea
-                            value={comment}
-                            id="message"
-                            rows={4}
-                            className="my-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Ajouter un commentaire à la commande"
-                            onChange={(e) => setComment(e.target.value)}
-                        ></textarea>
+                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Commentaire
+                            <textarea
+                                value={comment}
+                                id="message"
+                                rows={4}
+                                className="my-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Ajouter un commentaire à la commande"
+                                onChange={(e) => setComment(e.target.value)}
+                            />
+                        </label>
                         {commentOrderResponse.loading && <Loader />}
                         {!commentOrderResponse.loading && <Button onClick={handleSubmitComment}>Sauvegarder</Button>}
                         {commentOrderResponse.error && <p>Erreur : {commentOrderResponse.error.message}</p>}

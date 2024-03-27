@@ -40,7 +40,8 @@ export default function SelectNameAndNumber() {
 
     setPendingOrder((prevOrder: CustomizedPairOfSocks) => {
       const newCustomiziationValues = prevOrder.customizationValues.slice();
-      const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id.toString() == customizedFieldId);
+      const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id.toString() === customizedFieldId);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       value !== null ? newCustomiziationValues[indexOfChangingCustomizationValue].value = value : newCustomiziationValues[indexOfChangingCustomizationValue].value = ''
       return ({
         ...prevOrder,
