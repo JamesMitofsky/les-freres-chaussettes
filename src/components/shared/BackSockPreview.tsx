@@ -1,6 +1,7 @@
-import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
 import localFont from 'next/font/local';
 import { forwardRef } from 'react';
+
+import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
 
 const sportsFont = localFont({
   src: '../../../public/fonts/OctinSportsHv.otf',

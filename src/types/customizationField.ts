@@ -1,10 +1,9 @@
-import { CustomizationType } from "./customizationType"
-
+import { CustomizationType } from './customizationType';
 
 type CustomizationField = {
-    id: number
-    type?: CustomizationType
-    name?: string
-}
+  id: number;
+  type?: CustomizationType;
+  name?: string;
+};
 
-export default CustomizationField
+export default CustomizationField;

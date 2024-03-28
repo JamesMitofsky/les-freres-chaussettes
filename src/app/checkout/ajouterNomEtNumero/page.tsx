@@ -1,20 +1,22 @@
 'use client';
 
-import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
-import { z } from 'zod';
-import useLocalStorageState from 'use-local-storage-state';
-import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import fieldIds from '@/globals/fieldIds';
-import SwitchForm from '@/components/checkout/CustomSwitchState';
-import playerPlaceholder from '@/globals/placeholderPlayer';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
-import { ChangeEvent } from 'react';
-import { pendingOrderKey } from '@/globals/localStorageKeys';
 import localFont from 'next/font/local';
-import styles from './Input.module.css';
+import { ChangeEvent } from 'react';
+import { useForm } from 'react-hook-form';
+import useLocalStorageState from 'use-local-storage-state';
+import { z } from 'zod';
+
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
+import SwitchForm from '@/components/checkout/CustomSwitchState';
+import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
+import fieldIds from '@/globals/fieldIds';
+import { pendingOrderKey } from '@/globals/localStorageKeys';
+import playerPlaceholder from '@/globals/placeholderPlayer';
+import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
+
 import { playerObject } from '../../../globals/defaultPlayer';
+import styles from './Input.module.css';
 
 const sportsFont = localFont({
   src: '../../../../public/fonts/OctinSportsHv.otf',
@@ -40,15 +42,21 @@ export default function SelectNameAndNumber() {
 
     setPendingOrder((prevOrder: CustomizedPairOfSocks) => {
       const newCustomiziationValues = prevOrder.customizationValues.slice();
-      const indexOfChangingCustomizationValue = prevOrder.customizationValues.findIndex(v => v.field.id.toString() === customizedFieldId);
+      const indexOfChangingCustomizationValue =
+        prevOrder.customizationValues.findIndex(
+          (v) => v.field.id.toString() === customizedFieldId,
+        );
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      value !== null ? newCustomiziationValues[indexOfChangingCustomizationValue].value = value : newCustomiziationValues[indexOfChangingCustomizationValue].value = ''
-      return ({
+      value !== null
+        ? (newCustomiziationValues[indexOfChangingCustomizationValue].value =
+            value)
+        : (newCustomiziationValues[indexOfChangingCustomizationValue].value =
+            '');
+      return {
         ...prevOrder,
-        newCustomiziationValues
-      })
-    }
-    );
+        newCustomiziationValues,
+      };
+    });
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -76,7 +84,10 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-9xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.number}
             name={numberId.toString()}
-            value={customizationValues.find(v => v.field.id === fieldIds.number)?.value}
+            value={
+              customizationValues.find((v) => v.field.id === fieldIds.number)
+                ?.value
+            }
             onChange={updateTextInput}
           />
         )}
@@ -86,7 +97,10 @@ export default function SelectNameAndNumber() {
             className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.name}
             name={nameId.toString()}
-            value={customizationValues.find(v => v.field.id === fieldIds.name)?.value}
+            value={
+              customizationValues.find((v) => v.field.id === fieldIds.name)
+                ?.value
+            }
             onChange={updateTextInput}
           />
         )}

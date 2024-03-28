@@ -1,6 +1,7 @@
 'use client';
 
-import { Switch } from '@/components/ui/switch';
+import { UseFormReturn } from 'react-hook-form';
+
 import {
   Form,
   FormControl,
@@ -8,22 +9,23 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
-import { UseFormReturn } from 'react-hook-form';
-
+import { Switch } from '@/components/ui/switch';
 
 type SwitchFormProps = {
-  form: UseFormReturn<{
-    includeNumber?: boolean | undefined;
-    includeName?: boolean | undefined;
-}, any, undefined>;
+  form: UseFormReturn<
+    {
+      includeNumber?: boolean | undefined;
+      includeName?: boolean | undefined;
+    },
+    any,
+    undefined
+  >;
 };
 
-export default function SwitchForm({form}: SwitchFormProps) {
-
-
+export default function SwitchForm({ form }: SwitchFormProps) {
   return (
     <Form {...form}>
-      <div className="flex flex-col justify-between max-w-sm w-full gap-5">
+      <div className="flex w-full max-w-sm flex-col justify-between gap-5">
         <FormField
           control={form.control}
           name="includeNumber"
