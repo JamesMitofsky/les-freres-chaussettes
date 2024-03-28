@@ -94,7 +94,7 @@ export default function SelectNameAndNumber() {
         {getValues().includeName && (
           <input
             type="text"
-            className={`w-full border-b px-3 text-center text-6xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
+            className={`w-full border-b px-3 text-center text-5xl text-gray-700 focus:outline-none ${styles.customInput} ${sportsFont.className}`}
             placeholder={playerPlaceholder.name}
             name={nameId.toString()}
             value={
