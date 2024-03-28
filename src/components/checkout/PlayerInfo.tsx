@@ -1,9 +1,10 @@
+import localFont from 'next/font/local';
+import useLocalStorageState from 'use-local-storage-state';
+
 import { playerObject } from '@/globals/defaultPlayer';
 import fieldIds from '@/globals/fieldIds';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import useLocalStorageState from 'use-local-storage-state';
-import localFont from 'next/font/local';
 
 export type Player = {
   name?: string;

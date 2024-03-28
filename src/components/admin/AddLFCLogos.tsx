@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-key */
-import { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import { useState } from 'react';
+
 import { LogoCategory } from '@/types/logoCategory';
+
 import { UploadLogo } from '../shared/Upload/UploadLogo';
 import { Loader } from '../ui/Loader';
 

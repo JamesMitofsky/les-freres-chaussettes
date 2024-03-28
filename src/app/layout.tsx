@@ -1,8 +1,10 @@
 'use client';
 
-import { ApolloProvider } from '@apollo/client';
 // import type { Metadata } from 'next';
 import './globals.css';
+
+import { ApolloProvider } from '@apollo/client';
+
 import GlobalHeader from '@/components/GlobalHeader';
 import { useConfigClient } from '@/useConfigClient';
 

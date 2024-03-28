@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-undef */
-import { Loader } from '@/components/ui/Loader';
-import { serverUrl } from '@/globals/serverUrl';
 import { ReactNode, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
+
+import { Loader } from '@/components/ui/Loader';
+import { serverUrl } from '@/globals/serverUrl';
 
 const fileTypes = ['JPG', 'PNG'];
 

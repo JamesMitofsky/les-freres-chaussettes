@@ -1,11 +1,12 @@
 'use client';
 
-import { useQuery, gql } from '@apollo/client';
+import { gql,useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
+
 import { OrderListElement } from '@/components/admin/OrderListElement';
-import Order from '@/types/order';
 import { ToolBar } from '@/components/admin/ToolBar';
 import { Loader } from '@/components/ui/Loader';
+import Order from '@/types/order';
 
 const ORDERS = gql`
   query ($filters: [OrderStatus!]!) {

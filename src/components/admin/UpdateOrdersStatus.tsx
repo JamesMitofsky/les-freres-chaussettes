@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-key */
-import Order from '@/types/order';
-import { OrderStatus } from '@/types/orderStatus';
 import { gql, useMutation } from '@apollo/client';
 import { useState } from 'react';
+
+import Order from '@/types/order';
+import { OrderStatus } from '@/types/orderStatus';
+
 import { Loader } from '../ui/Loader';
 
 const UPDATE_ORDERS_STATUS = gql`

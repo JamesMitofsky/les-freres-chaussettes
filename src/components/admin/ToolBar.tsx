@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import Order from '@/types/order';
 import { useState } from 'react';
+
 import { serverUrl } from '@/globals/serverUrl';
+import Order from '@/types/order';
+
 import { Button } from '../ui/button';
 import { Loader } from '../ui/Loader';
 import { SelectFilter } from './SelectFilter';

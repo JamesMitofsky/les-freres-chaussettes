@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { useEffect, useState } from 'react';
+
 import { serverUrl } from './globals/serverUrl';
 
 export const useConfigClient = () => {

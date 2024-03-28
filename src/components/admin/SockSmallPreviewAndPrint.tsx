@@ -1,13 +1,15 @@
-import fieldIds from '@/globals/fieldIds';
-import CartProduct from '@/types/customizedPairOfSocks';
-import localFont from 'next/font/local';
 import { gql, useMutation } from '@apollo/client';
+import localFont from 'next/font/local';
 // import BackSockPreview from '../shared/BackSockPreview';
 // import ReactToPrint from "react-to-print"
 // import { useRef } from 'react';
 // import FrontSockPreview from '../shared/FrontSockPreview';
 // import { Button } from '../ui/button';
 import Image from 'next/image';
+
+import fieldIds from '@/globals/fieldIds';
+import CartProduct from '@/types/customizedPairOfSocks';
+
 import { UploadLogo } from '../shared/Upload/UploadLogo';
 import { Loader } from '../ui/Loader';
 

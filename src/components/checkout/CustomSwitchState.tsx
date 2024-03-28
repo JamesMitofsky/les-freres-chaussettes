@@ -1,6 +1,7 @@
 'use client';
 
-import { Switch } from '@/components/ui/switch';
+import { UseFormReturn } from 'react-hook-form';
+
 import {
   Form,
   FormControl,
@@ -8,7 +9,7 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
-import { UseFormReturn } from 'react-hook-form';
+import { Switch } from '@/components/ui/switch';
 
 type SwitchFormProps = {
   form: UseFormReturn<

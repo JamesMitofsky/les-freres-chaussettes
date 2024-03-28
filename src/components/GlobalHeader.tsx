@@ -1,7 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+
 import BackNavigation from './BackNavigation';
 
 const sizeOfLogo = 52;

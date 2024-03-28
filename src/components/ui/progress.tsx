@@ -1,11 +1,11 @@
 'use client';
 
-import * as React from 'react';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
+import * as React from 'react';
+import { useEffect } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
 
 import { cn } from '@/lib/utils';
-import useLocalStorageState from 'use-local-storage-state';
-import { useEffect } from 'react';
 
 type ProgressProps = React.ComponentPropsWithoutRef<
   typeof ProgressPrimitive.Root

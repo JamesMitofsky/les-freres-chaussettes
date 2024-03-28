@@ -2,13 +2,15 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'moment/locale/fr';
+
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import Moment from 'react-moment';
+
 import { OrderStatusBadge } from '@/components/admin/OrderStatusBadge';
 import { Button } from '@/components/ui/button';
-import { computeNumberOfPairs } from '@/utils/computeNumberOfPairs';
-import { gql, useMutation, useQuery } from '@apollo/client';
-import Moment from 'react-moment';
 import { Loader } from '@/components/ui/Loader';
+import { computeNumberOfPairs } from '@/utils/computeNumberOfPairs';
 
 const ORDER = gql`
   query ($orderId: Float!) {

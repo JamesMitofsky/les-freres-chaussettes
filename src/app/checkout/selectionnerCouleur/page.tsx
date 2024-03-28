@@ -1,15 +1,16 @@
 'use client';
 
-import { AllowedColors, GradientPicker } from '@/components/GradientPicker';
-import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 import { useCallback } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
+import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
+import { AllowedColors, GradientPicker } from '@/components/GradientPicker';
+import BackSockPreview from '@/components/shared/BackSockPreview';
+import { playerObject } from '@/globals/defaultPlayer';
+import fieldIds from '@/globals/fieldIds';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import useLocalStorageState from 'use-local-storage-state';
-import fieldIds from '@/globals/fieldIds';
-import { playerObject } from '@/globals/defaultPlayer';
-import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
-import BackSockPreview from '@/components/shared/BackSockPreview';
 
 export default function SelectColor() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

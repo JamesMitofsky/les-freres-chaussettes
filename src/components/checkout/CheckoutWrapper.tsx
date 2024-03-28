@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import TypographyH1 from '../typography/TypographyH1';
-import Subtitle from '../typography/Subtitle';
+
 import ActionButtons from '../ActionButtons';
+import Subtitle from '../typography/Subtitle';
+import TypographyH1 from '../typography/TypographyH1';
 import { Progress } from '../ui/progress';
 
 type CheckoutButtonProps = {

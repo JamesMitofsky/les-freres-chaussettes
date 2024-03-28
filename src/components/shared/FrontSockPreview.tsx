@@ -1,5 +1,6 @@
-import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
 import { forwardRef } from 'react';
+
+import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
 
 export interface FrontSockPreviewInput {
   logo_url: string;

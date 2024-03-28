@@ -1,20 +1,22 @@
 'use client';
 
-import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
-import { z } from 'zod';
-import useLocalStorageState from 'use-local-storage-state';
-import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import fieldIds from '@/globals/fieldIds';
-import SwitchForm from '@/components/checkout/CustomSwitchState';
-import playerPlaceholder from '@/globals/placeholderPlayer';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
-import { ChangeEvent } from 'react';
-import { pendingOrderKey } from '@/globals/localStorageKeys';
 import localFont from 'next/font/local';
-import styles from './Input.module.css';
+import { ChangeEvent } from 'react';
+import { useForm } from 'react-hook-form';
+import useLocalStorageState from 'use-local-storage-state';
+import { z } from 'zod';
+
+import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
+import SwitchForm from '@/components/checkout/CustomSwitchState';
+import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
+import fieldIds from '@/globals/fieldIds';
+import { pendingOrderKey } from '@/globals/localStorageKeys';
+import playerPlaceholder from '@/globals/placeholderPlayer';
+import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
+
 import { playerObject } from '../../../globals/defaultPlayer';
+import styles from './Input.module.css';
 
 const sportsFont = localFont({
   src: '../../../../public/fonts/OctinSportsHv.otf',

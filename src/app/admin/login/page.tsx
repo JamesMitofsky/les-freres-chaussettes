@@ -1,11 +1,10 @@
 'use client';
 
+import { gql, useMutation } from '@apollo/client';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
-import { gql, useMutation } from '@apollo/client';
 
 const LOGIN_MUTATION = gql`
   mutation ($password: String!) {

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import CheckoutWrapper, { CheckoutWithTitle } from './CheckoutWrapper';
 
 type CheckoutWithTitleSansChildren = Omit<CheckoutWithTitle, 'children'>;

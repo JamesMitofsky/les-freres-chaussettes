@@ -1,14 +1,17 @@
-import Order from '@/types/order';
-// eslint-disable-next-line import/order
-import { OrderStatusBadge } from './OrderStatusBadge';
-import { computeNumberOfPairs } from '@/utils/computeNumberOfPairs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'moment/locale/fr';
-import Moment from 'react-moment';
+
 // import { useRef } from "react";
 import Link from 'next/link';
-import { SockSmallPreviewAndPrint } from './SockSmallPreviewAndPrint';
+import Moment from 'react-moment';
+
+import Order from '@/types/order';
+import { computeNumberOfPairs } from '@/utils/computeNumberOfPairs';
+
 import { Comment } from '../ui/comment';
+// eslint-disable-next-line import/order
+import { OrderStatusBadge } from './OrderStatusBadge';
+import { SockSmallPreviewAndPrint } from './SockSmallPreviewAndPrint';
 
 export const OrderListElement: React.FC<{
   order: Order;

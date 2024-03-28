@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import useLocalStorageState from 'use-local-storage-state';
+
 import { playerObject } from '@/globals/defaultPlayer';
+import fieldIds from '@/globals/fieldIds';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import useLocalStorageState from 'use-local-storage-state';
-import fieldIds from '@/globals/fieldIds';
+
 import PlayerInfo from './PlayerInfo';
 
 function MiniPrevisualization() {

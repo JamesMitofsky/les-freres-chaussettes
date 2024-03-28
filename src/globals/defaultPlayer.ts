@@ -1,6 +1,7 @@
 import CustomizedPairOfSocks from '@/types/customizedPairOfSocks';
-import fieldIds from './fieldIds';
+
 import baseIds from './baseIds';
+import fieldIds from './fieldIds';
 
 export const playerObject: CustomizedPairOfSocks = {
   quantity: 1,
