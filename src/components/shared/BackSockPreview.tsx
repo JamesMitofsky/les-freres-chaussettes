@@ -1,7 +1,5 @@
 import localFont from 'next/font/local';
 
-import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
-
 const sportsFont = localFont({
   src: '../../../public/fonts/OctinSportsHv.otf',
   display: 'swap',
@@ -20,7 +18,7 @@ const BackSockPreview = ({
   playerName,
   textColor,
 }: BackSockPreviewProps) => (
-  <div className="flex flex-col items-center gap-3" style={sockPrintDimensions}>
+  <div className="flex flex-col items-center gap-3">
     <div
       style={{
         width: 47,
