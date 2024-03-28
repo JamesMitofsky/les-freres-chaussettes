@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { useState } from "react"
 import { gql, useMutation } from "@apollo/client"
-import { LogoCategory } from "@/types/logoCategory"
+import { valeursLogoCategory } from "@/types/logo"
 import { UploadLogo } from "../shared/Upload/UploadLogo"
 import { Loader } from "../ui/Loader"
 
@@ -38,8 +38,8 @@ export const AddLFCLogos = () => {
             <div className="flex gap-2">
                 <select onChange={handleSelectCategory} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Sélectionner une catégorie</option>
-                    {Object.keys(LogoCategory).map(key => (
-                        <option selected={key === selectedCategory} value={key}>{LogoCategory[key as keyof typeof LogoCategory]}</option>
+                    {valeursLogoCategory.map(key => (
+                        <option selected={key === selectedCategory} value={key}>{key}</option>
                     ))}
                 </select>
                 <UploadLogo isMultiple onUrls={handleCreateLogos}>{null}</UploadLogo>

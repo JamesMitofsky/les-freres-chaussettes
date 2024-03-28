@@ -100,7 +100,7 @@ export const SockSmallPreviewAndPrint: React.FC<{ product: CartProduct }> = ({ p
 
                 <div>
                     <UploadLogo isMultiple={false} onUrl={handleUpdateCustomizationLogo}>
-                        <Image alt="logo-preview" className="aspect-square object-scale-down w-32" src={data ? data.updateCustomizationValue.value : logo} />
+                        <Image alt="logo-preview" width={60} height={60} className="aspect-square object-scale-down w-32" src={data ? data.updateCustomizationValue.value : logo} />
                     </UploadLogo>
                     {loading && <Loader />}
                 </div>
