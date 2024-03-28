@@ -64,7 +64,7 @@ export default function SelectColor() {
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleurDuBande',
       }}
-      className="items-center justify-around"
+      className="my-11 items-center justify-around gap-11"
     >
       <BackSockPreview
         bandsColor={bandsColor}
