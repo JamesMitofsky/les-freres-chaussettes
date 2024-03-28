@@ -38,6 +38,23 @@ export default function SelectColor() {
     [setPendingOrder],
   );
 
+  const bandsColor =
+    pendingOrder.customizationValues.find(
+      (v) => v.field.id === fieldIds.bandColor,
+    )?.value || 'black';
+
+  const textColor =
+    pendingOrder.customizationValues.find((v) => v.field.id === fieldIds.color)
+      ?.value || 'black';
+
+  const playerNumber =
+    pendingOrder.customizationValues.find((v) => v.field.id === fieldIds.number)
+      ?.value || '10';
+
+  const playerName =
+    pendingOrder.customizationValues.find((v) => v.field.id === fieldIds.name)
+      ?.value || 'Joueur';
+
   return (
     <CheckoutWrapper
       currentStep={5}
@@ -50,24 +67,10 @@ export default function SelectColor() {
       className="items-center justify-around"
     >
       <BackSockPreview
-        data={{
-          bandsColor:
-            pendingOrder.customizationValues.find(
-              (v) => v.field.id === fieldIds.bandColor,
-            )?.value || 'black',
-          textColor:
-            pendingOrder.customizationValues.find(
-              (v) => v.field.id === fieldIds.color,
-            )?.value || 'black',
-          playerNumber:
-            pendingOrder.customizationValues.find(
-              (v) => v.field.id === fieldIds.number,
-            )?.value || '10',
-          playerName:
-            pendingOrder.customizationValues.find(
-              (v) => v.field.id === fieldIds.name,
-            )?.value || 'Joueur',
-        }}
+        bandsColor={bandsColor}
+        textColor={textColor}
+        playerNumber={playerNumber}
+        playerName={playerName}
       />
       <GradientPicker setHexColor={handleColorSetting} />
     </CheckoutWrapper>

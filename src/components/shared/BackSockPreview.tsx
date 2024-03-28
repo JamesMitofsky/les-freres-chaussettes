@@ -1,5 +1,4 @@
 import localFont from 'next/font/local';
-import { forwardRef } from 'react';
 
 import { sockPrintDimensions } from '@/globals/sockPrintDimensions';
 
@@ -8,29 +7,31 @@ const sportsFont = localFont({
   display: 'swap',
 });
 
-export interface BackSockPreviewInput {
+export interface BackSockPreviewProps {
   bandsColor: string;
   playerNumber: string;
   playerName: string;
   textColor: string;
 }
 
-const BackSockPreview: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  { data: BackSockPreviewInput }
-> = ({ data }) => (
+const BackSockPreview = ({
+  bandsColor,
+  playerNumber,
+  playerName,
+  textColor,
+}: BackSockPreviewProps) => (
   <div className="flex flex-col items-center gap-3" style={sockPrintDimensions}>
     <div
       style={{
         width: 47,
         height: 68,
-        backgroundColor: data.bandsColor,
+        backgroundColor: bandsColor,
       }}
     />
     <div
       className={`number-name flex flex-col items-center justify-center ${sportsFont.className}`}
       style={{
-        color: data.textColor,
+        color: textColor,
       }}
     >
       <p
@@ -39,7 +40,7 @@ const BackSockPreview: React.ForwardRefRenderFunction<
           lineHeight: '98px',
         }}
       >
-        {data.playerNumber}
+        {playerNumber}
       </p>
       <p
         style={{
@@ -47,33 +48,31 @@ const BackSockPreview: React.ForwardRefRenderFunction<
           lineHeight: '55px',
         }}
       >
-        {data.playerName}
+        {playerName}
       </p>
     </div>
     <div
       style={{
         width: 47,
         height: 68,
-        backgroundColor: data.bandsColor,
+        backgroundColor: bandsColor,
       }}
     />
     <div
       style={{
         width: 47,
         height: 45,
-        backgroundColor: data.bandsColor,
+        backgroundColor: bandsColor,
       }}
     />
     <div
       style={{
         width: 47,
         height: 30,
-        backgroundColor: data.bandsColor,
+        backgroundColor: bandsColor,
       }}
     />
   </div>
 );
 
-export default forwardRef<HTMLDivElement, { data: BackSockPreviewInput }>(
-  BackSockPreview,
-);
+export default BackSockPreview;
