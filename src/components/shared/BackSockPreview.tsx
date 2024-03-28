@@ -21,10 +21,9 @@ const BackSockPreview = ({
   <div className="flex flex-col items-center gap-3">
     <div
       style={{
-        width: 47,
-        height: 68,
         backgroundColor: bandsColor,
       }}
+      className="h-16 w-12"
     />
     <div
       className={`number-name flex flex-col items-center justify-center ${sportsFont.className}`}
@@ -32,41 +31,24 @@ const BackSockPreview = ({
         color: textColor,
       }}
     >
-      <p
-        style={{
-          fontSize: '112px',
-          lineHeight: '98px',
-        }}
-      >
-        {playerNumber}
-      </p>
-      <p
-        style={{
-          fontSize: '50px',
-          lineHeight: '55px',
-        }}
-      >
-        {playerName}
-      </p>
+      <p className="text-9xl">{playerNumber}</p>
+      <p className="text-5xl">{playerName}</p>
     </div>
     <div
+      className="h-16 w-12"
       style={{
-        width: 47,
-        height: 68,
         backgroundColor: bandsColor,
       }}
     />
     <div
+      className="h-12 w-12"
       style={{
-        width: 47,
-        height: 45,
         backgroundColor: bandsColor,
       }}
     />
     <div
+      className="h-8 w-12"
       style={{
-        width: 47,
-        height: 30,
         backgroundColor: bandsColor,
       }}
     />
