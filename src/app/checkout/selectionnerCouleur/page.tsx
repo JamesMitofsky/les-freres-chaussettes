@@ -7,6 +7,7 @@ import CheckoutWrapper from '@/components/checkout/CheckoutWrapper';
 import MiniPrevisualization from '@/components/checkout/MiniPrevisualization';
 import { AllowedColors, GradientPicker } from '@/components/GradientPicker';
 import BackSockPreview from '@/components/shared/BackSockPreview';
+import TypographyH1 from '@/components/typography/TypographyH1';
 import { playerObject } from '@/globals/defaultPlayer';
 import fieldIds from '@/globals/fieldIds';
 import { pendingOrderKey } from '@/globals/localStorageKeys';
@@ -59,7 +60,6 @@ export default function SelectColor() {
     <CheckoutWrapper
       currentStep={5}
       customHeader={<MiniPrevisualization />}
-      title="Sélectionner la couleur du nom et du numéro"
       primaryButton={{
         label: 'Continuer',
         relativePathToNextPage: 'selectionnerCouleurDuBande',
@@ -72,6 +72,7 @@ export default function SelectColor() {
         playerNumber={playerNumber}
         playerName={playerName}
       />
+      <TypographyH1 text="Sélectionner la couleur du nom et du numéro" />
       <GradientPicker setHexColor={handleColorSetting} />
     </CheckoutWrapper>
   );
