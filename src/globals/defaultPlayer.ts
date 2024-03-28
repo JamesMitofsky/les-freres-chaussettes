@@ -8,32 +8,32 @@ export const playerObject: CustomizedPairOfSocks = {
   // TO CHANGE WHILE USER SELECT SIZE
   base: {
     id: baseIds.S,
-    size: "S"
+    size: 'S',
   },
   customizationValues: [
     {
       field: {
         id: fieldIds.number,
       },
-      value: undefined
+      value: undefined,
     },
     {
       field: {
         id: fieldIds.name,
       },
-      value: undefined
+      value: undefined,
     },
     {
       field: {
         id: fieldIds.color,
       },
-      value: "#000000"
+      value: '#000000',
     },
     {
       field: {
         id: fieldIds.bandColor,
       },
-      value: "#000000"
+      value: '#000000',
     },
   ],
 };

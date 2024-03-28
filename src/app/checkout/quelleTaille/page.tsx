@@ -5,8 +5,11 @@ export default function SelectSize() {
     <CheckoutWrapper
       currentStep={7}
       title="Quelle taille pour vos chaussettes ?"
-      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'previsualisation'}}
-     >
+      primaryButton={{
+        label: 'Continuer',
+        relativePathToNextPage: 'previsualisation',
+      }}
+    >
       <div>s</div>
       <div>m</div>
       <div>l</div>

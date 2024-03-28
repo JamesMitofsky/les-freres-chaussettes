@@ -11,7 +11,10 @@ function FaceAvant() {
       title="Face avant"
       subtitle="Personnalisation de la face avant
         de vos chaussettes"
-      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'checkout/souhaitezVousImprimerUnLogo' }}
+      primaryButton={{
+        label: 'Continuer',
+        relativePathToNextPage: 'checkout/souhaitezVousImprimerUnLogo',
+      }}
     />
   );
 }

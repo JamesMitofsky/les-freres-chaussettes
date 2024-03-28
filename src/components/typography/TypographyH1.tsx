@@ -1,7 +1,5 @@
 export default function TypographyH1({ text }: { text: string }) {
   return (
-    <h1 className="text-3xl my-3 font-extrabold tracking-tight">
-      {text}
-    </h1>
+    <h1 className="my-3 text-3xl font-extrabold tracking-tight">{text}</h1>
   );
 }

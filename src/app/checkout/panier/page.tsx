@@ -4,9 +4,9 @@ export default function CheckoutCart() {
   return (
     <CheckoutWrapper
       title="Panier"
-      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'unknown'}}
+      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'unknown' }}
     >
-        <div>cart</div>
+      <div>cart</div>
     </CheckoutWrapper>
   );
 }

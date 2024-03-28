@@ -3,12 +3,14 @@ import CheckoutWrapper, { CheckoutWithTitle } from './CheckoutWrapper';
 
 type CheckoutWithTitleSansChildren = Omit<CheckoutWithTitle, 'children'>;
 
-type CheckoutWrapperWithImageProps = Readonly<{
-  image: {
-    src: string;
-    alt: string;
-  };
-} & CheckoutWithTitleSansChildren>;
+type CheckoutWrapperWithImageProps = Readonly<
+  {
+    image: {
+      src: string;
+      alt: string;
+    };
+  } & CheckoutWithTitleSansChildren
+>;
 
 /** Repackage the CheckoutWrapper component to render just an image */
 export default function CheckoutWrapperWithImage({

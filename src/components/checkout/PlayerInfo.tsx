@@ -25,12 +25,20 @@ function PlayerInfo() {
 
   return (
     <div
-      style={{ color: customizationValues.find(v => v.field.id === fieldIds.color)?.value || "black" }}
+      style={{
+        color:
+          customizationValues.find((v) => v.field.id === fieldIds.color)
+            ?.value || 'black',
+      }}
       className={`flex flex-col items-center justify-center ${sportsFont.className}`}
     >
-      <div className="w-min text-3xl">{customizationValues.find(v => v.field.id === fieldIds.number)?.value}</div>
+      <div className="w-min text-3xl">
+        {customizationValues.find((v) => v.field.id === fieldIds.number)?.value}
+      </div>
 
-      <div>{customizationValues.find(v => v.field.id === fieldIds.name)?.value}</div>
+      <div>
+        {customizationValues.find((v) => v.field.id === fieldIds.name)?.value}
+      </div>
     </div>
   );
 }

@@ -46,14 +46,16 @@ export default function CheckoutWrapper({
   });
 
   return (
-    <div
-      className="mx-5 flex h-full flex-col"
-    >
-      {currentStep !== (null || undefined) && <Progress value={(currentStep / 8) * 100} />}
+    <div className="mx-5 flex h-full flex-col">
+      {currentStep !== (null || undefined) && (
+        <Progress value={(currentStep / 8) * 100} />
+      )}
       {customHeader && customHeader}
       {title && <TypographyH1 text={title} />}
       {subtitle && <Subtitle text={subtitle} />}
-      <main className={`relative flex h-full w-full flex-col ${className}`}>{children}</main>
+      <main className={`relative flex h-full w-full flex-col ${className}`}>
+        {children}
+      </main>
       {primaryButton && (
         <ActionButtons
           primaryButton={generateButtonProps(primaryButton)}

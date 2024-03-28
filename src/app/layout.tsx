@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { ApolloProvider } from '@apollo/client';
 // import type { Metadata } from 'next';
@@ -12,9 +12,8 @@ import { useConfigClient } from '@/useConfigClient';
 //     'Joue avec des chaussettes de sport personnalisées, à ton effigie et pour toutes tes compétitions !',
 // };
 
-
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {

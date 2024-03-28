@@ -6,8 +6,14 @@ export default function BacksideOfSock() {
       currentStep={3}
       title="Face arrière"
       subtitle="Personnalisation de la face arrière de vos chaussettes"
-      image={{ src: '/images/socks-back.jpeg', alt: 'Face arrière des chaussettes' }}
-      primaryButton={{ label: 'Continuer', relativePathToNextPage: 'ajouterNomEtNumero'}}
+      image={{
+        src: '/images/socks-back.jpeg',
+        alt: 'Face arrière des chaussettes',
+      }}
+      primaryButton={{
+        label: 'Continuer',
+        relativePathToNextPage: 'ajouterNomEtNumero',
+      }}
     />
   );
 }

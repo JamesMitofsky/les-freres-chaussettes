@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function AdminLayout({
   children,
@@ -11,10 +11,10 @@ export default function AdminLayout({
   const { push } = useRouter();
 
   useEffect(() => {
-    if (!localStorage.getItem("jwt")) {
-      push('/admin/login')
+    if (!localStorage.getItem('jwt')) {
+      push('/admin/login');
     }
-}, [push])
+  }, [push]);
 
   return children;
 }

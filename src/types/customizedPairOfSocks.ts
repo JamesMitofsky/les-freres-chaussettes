@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import Base from "./base";
-import CustomizationField from "./customizationField";
-import CustomizationValue from "./customizationValues";
+import Base from './base';
+import CustomizationField from './customizationField';
+import CustomizationValue from './customizationValues';
 
 /** @example
  * const exampleOrder: ServerCustomizedPairOfSocks = {
@@ -40,7 +40,7 @@ type ServerCustomizedPairOfSocks = {
   };
  */
 type CustomizedPairOfSocks = {
-  id ?: number
+  id?: number;
   quantity: number;
   productId: number;
   base: Base;

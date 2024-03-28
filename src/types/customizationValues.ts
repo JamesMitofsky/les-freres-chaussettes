@@ -1,9 +1,9 @@
-import CustomizationField from "./customizationField";
+import CustomizationField from './customizationField';
 
 type CustomizationValue = {
-    id?: number
-    field: CustomizationField;
-    value?: string;
-}
+  id?: number;
+  field: CustomizationField;
+  value?: string;
+};
 
-export default CustomizationValue
+export default CustomizationValue;

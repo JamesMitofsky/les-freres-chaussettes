@@ -1,6 +1,6 @@
 type Base = {
-    id: number,
-    size: string
-}
+  id: number;
+  size: string;
+};
 
-export default Base
+export default Base;

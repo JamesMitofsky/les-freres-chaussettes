@@ -6,13 +6,12 @@ import { useRouter } from 'next/navigation';
 function BackNavigation() {
   const router = useRouter();
 
-
   return (
-    <div className='flex'>
+    <div className="flex">
       <button
         type="button"
         onClick={() => router.back()}
-        style={{color: "#f5be3d"}}
+        style={{ color: '#f5be3d' }}
       >
         <Image
           src="/svgs/left-arrow.svg"
